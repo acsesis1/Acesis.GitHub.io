@@ -1,1 +1,252 @@
-<h1>Prueba</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GM Lightmap Auditor - Lighting Audit Tool for Unreal Engine</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- PASO 1: AÑADIR CSS DE FANCYBOX (CORREGIDO EL ERROR TIPOGRÁFICO EN LA URL) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+    <style>
+        /* Estilos generales */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+        .orbitron { font-family: 'Orbitron', monospace; }
+        .glow-text { text-shadow: 0 0 20px #60a5fa, 0 0 40px #3b82f6, 0 0 60px #1d4ed8; }
+        .glow-box { box-shadow: 0 0 30px rgba(96, 165, 250, 0.3), 0 0 60px rgba(59, 130, 246, 0.1); }
+        .feature-card {
+            background: rgba(31, 41, 55, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(31, 41, 55, 0.6);
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+        }
+        .tech-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+        .icon-glow { filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5)); }
+        .section-padding { padding: 5rem 1rem; }
+        .cta-button {
+            font-family: 'Orbitron', monospace;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+        }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(139, 92, 246, 0.6); }
+        .header-video {
+            position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
+            width: auto; height: auto; z-index: -100; transform: translateX(-50%) translateY(-50%);
+            background-size: cover; opacity: 0.15;
+        }
+        .screenshot { border-radius: 0.75rem; border: 2px solid rgba(96, 165, 250, 0.3); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+
+        /* PASO 2: AÑADIR ESTILOS PARA INTERACCIÓN DEL LIGHTBOX */
+        a[data-fancybox] {
+            cursor: zoom-in;
+            display: block; /* Para que el enlace ocupe el espacio de la imagen */
+            border-radius: 0.75rem; /* Heredar el radio para que el hover se vea bien */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        a[data-fancybox]:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 25px rgba(96, 165, 250, 0.4);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <header class="relative overflow-hidden min-h-screen flex items-center justify-center text-center">
+        <div class="tech-pattern absolute inset-0"></div>
+        <div class="container mx-auto px-6 py-16 relative z-10">
+            <div class="max-w-4xl mx-auto mb-12" data-aos="zoom-in-up">
+                <!-- Imagen principal del header, también clicable -->
+                <a href="images/plugin-interface.png" data-fancybox="main-hero-image" data-caption="GM Lightmap Auditor User Interface">
+                    <img src="images/plugin-interface.png" alt="GM Lightmap Auditor Interface" class="screenshot">
+                </a>
+            </div>
+            <h1 class="orbitron text-5xl md:text-7xl font-black mb-4 glow-text" data-aos="zoom-in">GM LIGHTMAP AUDITOR:</h1>
+            <p class="text-xl md:text-2xl text-blue-300 mb-8 font-medium" data-aos="fade-up" data-aos-delay="200">Audit, Repair, and Bake Lighting All in One Place</p>
+            <div data-aos="fade-up" data-aos-delay="400">
+                <a href="#marketplace-link" class="cta-button inline-block text-white font-bold py-3 px-8 rounded-lg text-lg">
+                    <i class="fas fa-shopping-cart mr-2"></i> Get on Marketplace
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-padding bg-gray-900/50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- IMAGENES DE LA LISTA DE PLUGINS Y SETTINGS (CLICABLES) -->
+                <div class="grid grid-cols-1 gap-6" data-aos="fade-right">
+                    <!-- PASO 3: ENVOLVER LAS IMÁGENES EN ENLACES <a> CON ATRIBUTOS FANCYBOX -->
+                    <!-- Sugerencia: Usar el mismo 'data-fancybox' para agruparlas en la misma galería si es la intención -->
+                    <a href="images/plugin-in-editor.png" data-fancybox="workflow-settings-gallery" data-caption="GM Lightmap Auditor listed in the Unreal Engine plugin window.">
+                        <img src="images/plugin-in-editor.png" alt="Plugin listed in Unreal Engine" class="screenshot">
+                    </a>
+                    <a href="images/project-settings.png" data-fancybox="workflow-settings-gallery" data-caption="Extensive project settings allow for full customization of the audit and repair process.">
+                        <img src="images/project-settings.png" alt="Project Settings for GM Lightmap Auditor" class="screenshot">
+                    </a>
+                </div>
+                <div class="max-w-2xl" data-aos="fade-left" data-aos-delay="100">
+                    <h2 class="orbitron text-3xl md:text-4xl font-bold mb-8 text-blue-400"><i class="fas fa-rocket mr-3"></i> Revolutionize Your Lighting Workflow</h2>
+                    <p class="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
+                        Tired of unexplained lighting build failures? Wasting hours hunting down actors with incorrect UVs or inadequate lightmap resolutions? <strong class="text-yellow-400">Reclaim control of your static lighting with GM Lightmap Auditor!</strong>
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+                        This powerful editor tool is designed for lighting artists, environment artists, and developers looking to streamline their lightmap workflow in Unreal Engine.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE GALERÍA (IMÁGENES CLICABLES) -->
+    <section class="section-padding">
+        <div class="container mx-auto px-6">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold text-center mb-16 text-yellow-400" data-aos="zoom-in">
+                <i class="fas fa-images mr-3"></i> Plugin In Action
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- IMAGEN 1: Flujo de trabajo -->
+                <div class="flex flex-col gap-4" data-aos="fade-up">
+                    <h3 class="text-xl font-bold text-center text-blue-300">1. Audit & Identify</h3>
+                    <!-- PASO 2: Envolver la imagen en un enlace <a> para Fancybox -->
+                    <a href="images/workflow-in-action.png" data-fancybox="gallery" data-caption="The plugin identifies problems and lists them in the log.">
+                        <img src="images/workflow-in-action.png" alt="Auditing workflow showing problems found" class="screenshot">
+                    </a>
+                </div>
+                <!-- IMAGEN 2: Visualización -->
+                <div class="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="150">
+                    <h3 class="text-xl font-bold text-center text-blue-300">2. Visualize Problems</h3>
+                    <!-- PASO 2: Envolver la imagen en un enlace <a> para Fancybox -->
+                    <a href="images/problem-visualization.png" data-fancybox="gallery" data-caption="Debug materials are applied to instantly locate problematic actors in the viewport.">
+                        <img src="images/problem-visualization.png" alt="Problem visualization with debug materials" class="screenshot">
+                    </a>
+                </div>
+                <!-- IMAGEN 3: Bakeo -->
+                <div class="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-bold text-center text-blue-300">3. Bake with Confidence</h3>
+                    <!-- PASO 2: Envolver la imagen en un enlace <a> para Fancybox -->
+                    <a href="images/bake-in-progress.png" data-fancybox="gallery" data-caption="Initiate the light bake directly from the widget. The engine confirms it's running.">
+                        <img src="images/bake-in-progress.png" alt="Baking process started from the widget" class="screenshot">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-gray-900/50">
+        <div class="container mx-auto px-6">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold text-center mb-16 text-yellow-400" data-aos="zoom-in">
+                <i class="fas fa-star mr-3"></i>
+                Main Features
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-clipboard-check text-2xl text-orange-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Complete Audit</h3>
+                    </div>
+                    <p class="text-gray-300">Scans the entire level or just selected actors to find issues affecting bake quality and performance.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-wrench text-2xl text-green-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Automatic Repair</h3>
+                    </div>
+                    <p class="text-gray-300">Fixes most detected problems with a single click. Optimizes resolutions and adjusts properties automatically.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-eye text-2xl text-blue-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Intuitive Visualization</h3>
+                    </div>
+                    <p class="text-gray-300">Instantly identifies problematic actors in the viewport with a color-coding system for severity.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="50">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-cogs text-2xl text-purple-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Build Manager</h3>
+                    </div>
+                    <p class="text-gray-300">Launches lighting builds directly from the tool. Supports both CPU and GPU Lightmass.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="150">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-microchip text-2xl text-red-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">GPU Diagnostics</h3>
+                    </div>
+                    <p class="text-gray-300">Automatically checks the project's configuration for GPU Lightmass before baking.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="250">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-sliders-h text-2xl text-yellow-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Configurable Profiles</h3>
+                    </div>
+                    <p class="text-gray-300">Adjusts logic based on your project type: Mobile, Desktop, ArchViz VR, ArchViz Offline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 py-12 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8" data-aos="fade-up">
+                <i class="fas fa-lightbulb text-4xl text-yellow-400 icon-glow"></i>
+            </div>
+            <h3 class="orbitron text-2xl font-bold text-white mb-4" data-aos="fade-up" data-aos-delay="100">
+                Enjoy a Perfectly Lit Scene!
+            </h3>
+            <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                GM Lightmap Auditor revolutionizes your workflow in Unreal Engine, providing professional tools for perfect static lighting. Developed by and for technical artists.
+            </p>
+            <div class="mt-8 pt-8 border-t border-gray-700">
+                <p class="text-gray-500">
+                    <i class="fas fa-copyright mr-2"></i>
+                    GM Lightmap Auditor - Professional Tool for Unreal Engine
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PASO 4: AÑADIR JS DE FANCYBOX Y EL SCRIPT DE INICIALIZACIÓN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+
+        // Inicializa Fancybox en todos los enlaces que tengan el atributo data-fancybox
+        Fancybox.bind("[data-fancybox]", {
+            // Puedes añadir opciones de configuración aquí si lo deseas
+            // Por ejemplo, para cambiar la animación de transición:
+            // Carousel: { transition: "slide" },
+        });
+    </script>
+</body>
+</html>
