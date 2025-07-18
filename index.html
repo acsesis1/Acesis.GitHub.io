@@ -156,6 +156,9 @@
             <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
                 At Acsesis Developer UE, we are dedicated to creating powerful and efficient tools to enhance your workflow and take your Unreal Engine projects to the next level.
             </p>
+            <div class="mb-4 text-gray-400 text-sm" data-aos="fade-up" data-aos-delay="300">
+                Visitas: <span id="visit-count" class="font-bold text-blue-300"></span>
+            </div>
             <div class="mt-8 pt-8 border-t border-gray-700">
                 <p class="text-gray-500">
                     <i class="fas fa-copyright mr-2"></i>
@@ -171,6 +174,18 @@
             duration: 800,
             once: true,
             offset: 50,
+        });
+
+        // Visit Counter Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            let visitCount = localStorage.getItem('page_visit_count');
+            if (visitCount) {
+                visitCount = parseInt(visitCount) + 1;
+            } else {
+                visitCount = 1;
+            }
+            localStorage.setItem('page_visit_count', visitCount);
+            document.getElementById('visit-count').textContent = visitCount;
         });
     </script>
 </body>
