@@ -9,12 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- PASO 1: AÑADIR CSS DE FANCYBOX (CORREGIDO EL ERROR TIPOGRÁFICO EN LA URL) -->
+    <!-- Fancybox CSS for image lightboxes -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <link rel="icon" href="images/ico.png" type="image/png">
 
     <style>
-        /* Estilos generales */
+        /* General styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
@@ -58,9 +58,9 @@
         }
         .screenshot { border-radius: 0.75rem; border: 2px solid rgba(96, 165, 250, 0.3); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         
-        /* Estilos para el navbar */
+        /* Navbar styles */
         .navbar {
-            background: rgba(15, 15, 35, 0.8); /* Fondo semi-transparente */
+            background: rgba(15, 15, 35, 0.8); /* Semi-transparent background */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(96, 165, 250, 0.2);
@@ -84,11 +84,11 @@
             text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
         }
 
-        /* PASO 2: AÑADIR ESTILOS PARA INTERACCIÓN DEL LIGHTBOX */
+        /* Lightbox interaction styles */
         a[data-fancybox] {
             cursor: zoom-in;
-            display: block; /* Para que el enlace ocupe el espacio de la imagen */
-            border-radius: 0.75rem; /* Heredar el radio para que el hover se vea bien */
+            display: block; /* So the link occupies the image space */
+            border-radius: 0.75rem; /* Inherit border-radius for better hover effect */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         a[data-fancybox]:hover {
@@ -115,7 +115,7 @@
         <div class="tech-pattern absolute inset-0"></div>
         <div class="container mx-auto px-6 py-16 relative z-10">
             <div class="max-w-4xl mx-auto mb-12" data-aos="zoom-in-up">
-                <!-- Imagen principal del header, también clicable -->
+                <!-- Main header image, also clickable -->
                 <a href="images/plugin-interface.png" data-fancybox="main-hero-image" data-caption="GM Lightmap Auditor User Interface">
                     <img src="images/plugin-interface.png" alt="GM Lightmap Auditor Interface" class="screenshot">
                 </a>
@@ -133,10 +133,8 @@
     <section class="section-padding bg-gray-900/50">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- IMAGENES DE LA LISTA DE PLUGINS Y SETTINGS (CLICABLES) -->
+                <!-- Images of plugin list and settings (clickable) -->
                 <div class="grid grid-cols-1 gap-6" data-aos="fade-right">
-                    <!-- PASO 3: ENVOLVER LAS IMÁGENES EN ENLACES <a> CON ATRIBUTOS FANCYBOX -->
-                    <!-- Sugerencia: Usar el mismo 'data-fancybox' para agruparlas en la misma galería si es la intención -->
                     <a href="images/plugin-in-editor.png" data-fancybox="workflow-settings-gallery" data-caption="GM Lightmap Auditor listed in the Unreal Engine plugin window.">
                         <img src="images/plugin-in-editor.png" alt="Plugin listed in Unreal Engine" class="screenshot">
                     </a>
@@ -157,33 +155,30 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE GALERÍA (IMÁGENES CLICABLES) -->
+    <!-- GALLERY SECTION (CLICKABLE IMAGES) -->
     <section class="section-padding">
         <div class="container mx-auto px-6">
             <h2 class="orbitron text-3xl md:text-4xl font-bold text-center mb-16 text-yellow-400" data-aos="zoom-in">
                 <i class="fas fa-images mr-3"></i> Plugin In Action
             </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- IMAGEN 1: Flujo de trabajo -->
+                <!-- IMAGE 1: Workflow -->
                 <div class="flex flex-col gap-4" data-aos="fade-up">
                     <h3 class="text-xl font-bold text-center text-blue-300">1. Audit & Identify</h3>
-                    <!-- PASO 2: Envolver la imagen en un enlace <a> para Fancybox -->
                     <a href="images/workflow-in-action.png" data-fancybox="gallery" data-caption="The plugin identifies problems and lists them in the log.">
                         <img src="images/workflow-in-action.png" alt="Auditing workflow showing problems found" class="screenshot">
                     </a>
                 </div>
-                <!-- IMAGEN 2: Visualización -->
+                <!-- IMAGE 2: Visualization -->
                 <div class="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="150">
                     <h3 class="text-xl font-bold text-center text-blue-300">2. Visualize Problems</h3>
-                    <!-- PASO 2: Envolver la imagen en un enlace <a> para Fancybox -->
                     <a href="images/problem-visualization.png" data-fancybox="gallery" data-caption="Debug materials are applied to instantly locate problematic actors in the viewport.">
                         <img src="images/problem-visualization.png" alt="Problem visualization with debug materials" class="screenshot">
                     </a>
                 </div>
-                <!-- IMAGEN 3: Bakeo -->
+                <!-- IMAGE 3: Bake -->
                 <div class="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="300">
                     <h3 class="text-xl font-bold text-center text-blue-300">3. Bake with Confidence</h3>
-                    <!-- PASO 2: Envolver la imagen en un enlace <a> para Fancybox -->
                     <a href="images/bake-in-progress.png" data-fancybox="gallery" data-caption="Initiate the light bake directly from the widget. The engine confirms it's running.">
                         <img src="images/bake-in-progress.png" alt="Baking process started from the widget" class="screenshot">
                     </a>
@@ -196,57 +191,173 @@
         <div class="container mx-auto px-6">
             <h2 class="orbitron text-3xl md:text-4xl font-bold text-center mb-16 text-yellow-400" data-aos="zoom-in">
                 <i class="fas fa-star mr-3"></i>
-                Main Features
+                Main Features (Version 1.2)
             </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-1 lg:grid-cols-1 gap-8">
+                <!-- Feature: Comprehensive Audit and Diagnosis -->
                 <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up">
                     <div class="flex items-center mb-4">
                         <i class="fas fa-clipboard-check text-2xl text-orange-400 mr-3 icon-glow"></i>
-                        <h3 class="text-xl font-bold text-white">Complete Audit</h3>
+                        <h3 class="text-xl font-bold text-white">Comprehensive Audit and Diagnosis</h3>
                     </div>
-                    <p class="text-gray-300">Scans the entire level or just selected actors to find issues affecting bake quality and performance.</p>
+                    <p class="text-gray-300 mb-2">
+                        <strong>Scope:</strong> Analyzes any <span class="text-yellow-300">Static Mesh Actor</span> in the level or in a selection. Detects critical problems (that break the build), warnings (that affect quality/performance), and useful information. Automatically ignores non-static components (<span class="text-yellow-300">Movable</span>, <span class="text-yellow-300">Stationary</span>), focusing only on what is relevant for light baking.
+                    </p>
+                    <p class="text-gray-300">
+                        <strong>Benefit:</strong> Saves hours of manual inspection. Provides a complete and centralized report of all possible lighting problems <em class="text-yellow-300">before</em> starting a light bake. The focus on static components eliminates false positives and unnecessary noise in the log.
+                    </p>
                 </div>
                 
+                <!-- Feature: Intelligent and Non-Destructive Lightmap Unification for LODs -->
                 <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-4">
-                        <i class="fas fa-wrench text-2xl text-green-400 mr-3 icon-glow"></i>
-                        <h3 class="text-xl font-bold text-white">Automatic Repair</h3>
+                        <i class="fas fa-compress-arrows-alt text-2xl text-green-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Intelligent and Non-Destructive Lightmap Unification for LODs</h3>
                     </div>
-                    <p class="text-gray-300">Fixes most detected problems with a single click. Optimizes resolutions and adjusts properties automatically.</p>
+                    <p class="text-gray-300 mb-2">
+                        <strong>Scope:</strong> Implements a robust procedure: 
+                        <ol class="list-decimal list-inside ml-4">
+                            <li>Makes a granular backup of LOD <span class="text-yellow-300">Reduction Settings</span> and <span class="text-yellow-300">Screen Size</span>.</li>
+                            <li>Temporarily collapses the mesh to LOD0.</li>
+                            <li>Generates a single set of UVs for lightmap on channel 1.</li>
+                            <li>Restores the original number of LODs and their reduction settings.</li>
+                            <li>Applies a "logical collapse": forces secondary LODs to reuse UVs from channel 1 (disabling <span class="text-yellow-300">Generate Lightmap UVs</span> on them and adjusting <span class="text-yellow-300">SrcLightmapIndex</span> to <span class="text-yellow-300">1</span>).</li>
+                        </ol>
+                    </p>
+                    <p class="text-gray-300">
+                        <strong>Benefit:</strong>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>✅ Prevents critical failures in the lighting build caused by inconsistent LODs.</li>
+                            <li>✅ Optimizes performance and memory/disk usage, generating a single lightmap per mesh instead of one for each LOD.</li>
+                            <li>✅ Eliminates "flickering" of shadows when changing between LODs.</li>
+                            <li>✅ Does not destroy the artist's work, as the polygon reduction optimizations of each LOD are preserved intact.</li>
+                        </ul>
+                    </p>
                 </div>
-                
-                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-eye text-2xl text-blue-400 mr-3 icon-glow"></i>
-                        <h3 class="text-xl font-bold text-white">Intuitive Visualization</h3>
-                    </div>
-                    <p class="text-gray-300">Instantly identifies problematic actors in the viewport with a color-coding system for severity.</p>
-                </div>
-                
-                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="50">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-cogs text-2xl text-purple-400 mr-3 icon-glow"></i>
-                        <h3 class="text-xl font-bold text-white">Build Manager</h3>
-                    </div>
-                    <p class="text-gray-300">Launches lighting builds directly from the tool. Supports both CPU and GPU Lightmass.</p>
-                </div>
-                
+
+                <!-- Feature: Precise LOD Audit Logic -->
                 <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="150">
                     <div class="flex items-center mb-4">
-                        <i class="fas fa-microchip text-2xl text-red-400 mr-3 icon-glow"></i>
-                        <h3 class="text-xl font-bold text-white">GPU Diagnostics</h3>
+                        <i class="fas fa-chart-line text-2xl text-cyan-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Precise LOD Audit Logic</h3>
                     </div>
-                    <p class="text-gray-300">Automatically checks the project's configuration for GPU Lightmass before baking.</p>
+                    <p class="text-gray-300 mb-2">
+                        <strong>Scope:</strong> The LOD diagnosis is now more intelligent: <br>
+                        - <span class="text-red-400">Critical Error:</span> If <span class="text-yellow-300">Generate Lightmap UVs</span> is disabled on LOD0 but enabled on a secondary LOD. <br>
+                        - <span class="text-orange-400">Warning:</span> If <span class="text-yellow-300">Generate Lightmap UVs</span> is enabled on both LOD0 and a secondary LOD. <br>
+                        This reflects the engine's actual behavior.
+                    </p>
+                    <p class="text-gray-300">
+                        <strong>Benefit:</strong>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>✅ Eliminates false positives. It no longer reports the ideal configuration (LOD0 true, secondary LODs false) as "inconsistent."</li>
+                            <li>✅ Prioritizes real problems, helping the user focus on errors that will truly break the lighting build.</li>
+                        </ul>
+                    </p>
                 </div>
                 
+                <!-- Feature: Automatic Lightmap Resolution Adjustment -->
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-ruler-combined text-2xl text-blue-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Automatic Lightmap Resolution Adjustment</h3>
+                    </div>
+                    <p class="text-gray-300 mb-2">
+                        <strong>Scope:</strong> Calculates the optimal lightmap resolution for each mesh based on its surface area in the world (considering the actor's scale in the level) and the target texel density (configurable through Project Profiles). Applies this resolution with the "Fix" button.
+                    </p>
+                    <p class="text-gray-300">
+                        <strong>Benefit:</strong>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>✅ Ensures that all objects in the scene have consistent lighting quality, preventing large objects from having pixelated shadows.</li>
+                            <li>✅ Frees the artist from the tedious task of guessing and manually adjusting the resolution of hundreds of meshes.</li>
+                        </ul>
+                    </p>
+                </div>
+                
+                <!-- Feature: Integrated Lighting Build Manager -->
                 <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="250">
                     <div class="flex items-center mb-4">
-                        <i class="fas fa-sliders-h text-2xl text-yellow-400 mr-3 icon-glow"></i>
-                        <h3 class="text-xl font-bold text-white">Configurable Profiles</h3>
+                        <i class="fas fa-cogs text-2xl text-purple-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Integrated Lighting Build Manager</h3>
                     </div>
-                    <p class="text-gray-300">Adjusts logic based on your project type: Mobile, Desktop, ArchViz VR, ArchViz Offline.</p>
+                    <p class="text-gray-300 mb-2">
+                        <strong>Scope:</strong> Allows starting the light bake process (CPU Lightmass and GPU Lightmass) directly from the interface. Includes a quality selector (Preview, Medium, High, Production) and a pre-diagnosis for GPU Lightmass that verifies if the project is configured correctly.
+                    </p>
+                    <p class="text-gray-300">
+                        <strong>Benefit:</strong>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>✅ Unifies the entire static lighting process (Audit → Correction → Bake) in a single window.</li>
+                            <li>✅ Facilitates the use of GPU Lightmass, guiding the user to configure their project correctly and take advantage of GPU baking speed.</li>
+                        </ul>
+                    </p>
+                </div>
+                
+                <!-- Feature: Interactive Problem Visualization (On-Demand) -->
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-eye text-2xl text-red-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Interactive Problem Visualization (On-Demand)</h3>
+                    </div>
+                    <p class="text-gray-300 mb-2">
+                        <strong>Scope:</strong> Colors problematic actors directly in the editor viewport. Visualization is <span class="text-yellow-300">manually activated</span> with the "Visualize Problems" button after scanning, and can be filtered by severity (Critical, Warning, Info).
+                    </p>
+                    <p class="text-gray-300">
+                        <strong>Benefit:</strong>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>✅ Allows artists to instantly see which objects need attention and where they are in the level.</li>
+                            <li>✅ Manual control of visualization avoids visual overload and allows the user to decide when they want to see the problems.</li>
+                        </ul>
+                    </p>
+                </div>
+                
+                <!-- Feature: High Customization and User Control -->
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="350">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-sliders-h text-2xl text-yellow-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">High Customization and User Control</h3>
+                    </div>
+                    <p class="text-gray-300 mb-2">
+                        <strong>Scope:</strong> Through Project Settings, the user can define project profiles (Mobile, PC/Console, ArchViz), adjust texel density, and create exclusion lists to ignore specific meshes, actors, or materials that should not be audited.
+                    </p>
+                    <p class="text-gray-300">
+                        <strong>Benefit:</strong>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>✅ The plugin can be adapted to the specific needs and standards of any project.</li>
+                            <li>✅ Exclusion lists prevent false positives and allow the plugin to integrate cleanly into established workflows.</li>
+                        </ul>
+                    </p>
+                </div>
+
+                <!-- Feature: Respect for User Decisions (Mobility) -->
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-hand-paper text-2xl text-teal-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Respect for User Decisions (Mobility)</h3>
+                    </div>
+                    <p class="text-gray-300 mb-2">
+                        <strong>Scope:</strong> The plugin now <span class="text-yellow-300">respects the mobility setting</span> of components. Components marked as <span class="text-yellow-300">Movable</span> or <span class="text-yellow-300">Stationary</span> are ignored during the audit and correction of static lightmaps, as they are not relevant to this process.
+                    </p>
+                    <p class="text-gray-300">
+                        <strong>Benefit:</strong>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>✅ Prevents critical gameplay errors. There is no longer a risk of converting a movable object (like a door) into a static one, which would break its functionality.</li>
+                            <li>✅ Makes the plugin much safer to use in complex and established projects.</li>
+                        </ul>
+                    </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section class="section-padding bg-gray-900/50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold text-center mb-8 text-blue-400" data-aos="zoom-in">
+                <i class="fas fa-lightbulb mr-3"></i> Summary of Version 1.2
+            </h2>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+                <strong class="text-yellow-400">Version 1.2</strong> of GM Lightmap Auditor represents significant maturity. Not only has its scope expanded to be compatible with a much wider range of components in Unreal Engine, but its internal logic for handling LODs has been completely re-architected to be <strong class="text-yellow-400">non-destructive, precise, and safe</strong>. With the addition of more intelligent LOD auditing and respect for component mobility, the plugin is consolidated as an <strong class="text-yellow-400">essential and reliable</strong> workflow tool for any team working with static lighting.
+            </p>
         </div>
     </section>
 
@@ -261,6 +372,12 @@
             <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
                 GM Lightmap Auditor revolutionizes your workflow in Unreal Engine, providing professional tools for perfect static lighting. Developed by and for technical artists.
             </p>
+            <!-- Visit counter added here -->
+            <div class="mt-4 mb-4" data-aos="fade-up" data-aos-delay="250">
+                <a href="https://hits.seeyoufarm.com">
+                    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Facsesis1.github.io%2FAcesis.GitHub.io%2F&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" alt="Visit Counter"/>
+                </a>
+            </div>
             <div class="mt-8 pt-8 border-t border-gray-700">
                 <p class="text-gray-500">
                     <i class="fas fa-copyright mr-2"></i>
@@ -270,7 +387,7 @@
         </div>
     </footer>
 
-    <!-- PASO 4: AÑADIR JS DE FANCYBOX Y EL SCRIPT DE INICIALIZACIÓN -->
+    <!-- Fancybox JS and initialization script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
@@ -280,10 +397,10 @@
             offset: 50,
         });
 
-        // Inicializa Fancybox en todos los enlaces que tengan el atributo data-fancybox
+        // Initialize Fancybox on all links with the data-fancybox attribute
         Fancybox.bind("[data-fancybox]", {
-            // Puedes añadir opciones de configuración aquí si lo deseas
-            // Por ejemplo, para cambiar la animación de transición:
+            // Optional configuration options can be added here
+            // For example, to change the transition animation:
             // Carousel: { transition: "slide" },
         });
     </script>

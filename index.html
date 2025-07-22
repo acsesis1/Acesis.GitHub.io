@@ -156,8 +156,11 @@
             <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
                 At Acsesis Developer UE, we are dedicated to creating powerful and efficient tools to enhance your workflow and take your Unreal Engine projects to the next level.
             </p>
-            <div class="mb-4 text-gray-400 text-sm" data-aos="fade-up" data-aos-delay="300">
-                Visitas: <span id="visit-count" class="font-bold text-blue-300"></span>
+            <!-- Visit counter added here -->
+            <div class="mt-4 mb-4" data-aos="fade-up" data-aos-delay="250">
+                <a href="https://hits.seeyoufarm.com">
+                    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Facsesis1.github.io%2FAcesis.GitHub.io%2Findex.html&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" alt="Visit Counter"/>
+                </a>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-700">
                 <p class="text-gray-500">
@@ -174,18 +177,6 @@
             duration: 800,
             once: true,
             offset: 50,
-        });
-
-        // Visit Counter Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            let visitCount = localStorage.getItem('page_visit_count');
-            if (visitCount) {
-                visitCount = parseInt(visitCount) + 1;
-            } else {
-                visitCount = 1;
-            }
-            localStorage.setItem('page_visit_count', visitCount);
-            document.getElementById('visit-count').textContent = visitCount;
         });
     </script>
 </body>
