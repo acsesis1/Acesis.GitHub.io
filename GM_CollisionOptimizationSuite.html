@@ -47,7 +47,16 @@
             box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
         }
         .cta-button:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(139, 92, 246, 0.6); }
-        .screenshot { border-radius: 0.75rem; border: 2px solid rgba(96, 165, 250, 0.3); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .screenshot {
+            border-radius: 0.75rem;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+        .screenshot:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 25px rgba(96, 165, 250, 0.4);
+        }
         .navbar {
             background: rgba(15, 15, 35, 0.8);
             backdrop-filter: blur(10px);
@@ -70,10 +79,6 @@
             background: rgba(59, 130, 246, 0.2);
             color: #a78bfa;
             text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
-        }
-        a[data-fancybox]:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 25px rgba(96, 165, 250, 0.4);
         }
     </style>
 </head>
@@ -195,10 +200,16 @@
 
     <footer class="bg-gray-900 py-12 mt-12">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-500">
-                <i class="fas fa-copyright mr-2"></i>
-                GM Collision Optimization Suite - Professional Tool for Unreal Engine
-            </p>
+            <!-- Visit counter added here -->
+            <div class="mt-4 mb-4" data-aos="fade-up">
+                <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Facsesis1.github.io%2FAcsesis.GitHub.io%2FGM_CollisionOptimizationSuite.html&icon=github&color=%23198754&style=flat&label=Visitas" alt="Contador de visitas" />
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700">
+                <p class="text-gray-500">
+                    <i class="fas fa-copyright mr-2"></i>
+                    GM Collision Optimization Suite - Professional Tool for Unreal Engine
+                </p>
+            </div>
         </div>
     </footer>
 
