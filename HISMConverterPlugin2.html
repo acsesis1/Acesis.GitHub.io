@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HISM Converter Plugin - Optimize Your Unreal Engine Scenes</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Fancybox CSS remains if you still want lightbox functionality for other images or future additions -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <link rel="icon" href="images/ico.png" type="image/png">
+
+    <style>
+        /* General Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+        .orbitron { font-family: 'Orbitron', monospace; }
+        .glow-text { text-shadow: 0 0 20px #60a5fa, 0 0 40px #3b82f6, 0 0 60px #1d4ed8; }
+        .glow-box { box-shadow: 0 0 30px rgba(96, 165, 250, 0.3), 0 0 60px rgba(59, 130, 246, 0.1); }
+        .feature-card {
+            background: rgba(31, 41, 55, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(31, 41, 55, 0.6);
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+        }
+        .tech-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+        .icon-glow { filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5)); }
+        .section-padding { padding: 5rem 1rem; }
+        .cta-button {
+            font-family: 'Orbitron', monospace;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+        }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(139, 92, 246, 0.6); }
+        .header-video {
+            position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
+            width: auto; height: auto; z-index: -100; transform: translateX(-50%) translateY(-50%);
+            background-size: cover; opacity: 0.15;
+        }
+        .screenshot { border-radius: 0.75rem; border: 2px solid rgba(96, 165, 250, 0.3); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+
+        /* Estilos para el navbar */
+        .navbar {
+            background: rgba(15, 15, 35, 0.8); /* Fondo semi-transparente */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        .navbar-link {
+            font-family: 'Orbitron', monospace;
+            color: #e5e7eb;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .navbar-link:hover {
+            background: rgba(59, 130, 246, 0.2);
+            color: #a78bfa;
+            text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+        }
+
+        /* Styles for lightbox interaction (kept if used for other images) */
+        a[data-fancybox] {
+            cursor: zoom-in;
+            display: block; /* So the link occupies the image space */
+            border-radius: 0.75rem; /* Inherit radius for good hover effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        a[data-fancybox]:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 25px rgba(96, 165, 250, 0.4);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold orbitron text-white glow-text"><img src="images/ico2.png" alt="Acsesis Logo" class="inline-block h-8 w-8 mr-2">Acsesis Developer UE</a>
+            <div class="flex space-x-6">
+                <a href="index.html" class="navbar-link">Home</a>
+                <a href="GM-LIGHTMAP-AUDITOR.html" class="navbar-link">GM Lightmap Auditor</a>
+                <a href="HISMConverterPlugin.html" class="navbar-link">HISM Converter Plugin</a>
+                <a href="GM_CollisionOptimizationSuite.html" class="navbar-link">GM Collision Suite</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative overflow-hidden min-h-screen flex items-center justify-center text-center pt-24"> <!-- Added pt-24 to account for fixed navbar -->
+        <div class="tech-pattern absolute inset-0"></div>
+        <div class="container mx-auto px-6 py-16 relative z-10">
+            <div class="max-w-4xl mx-auto mb-12" data-aos="zoom-in-up">
+                <!-- MAIN HEADER IMAGE - Placeholder. Replace with your actual image URL. -->
+                <img src="images/hism (2).png" 
+                     alt="HISM Converter Plugin Interface" class="screenshot">
+            </div>
+            <h1 class="orbitron text-5xl md:text-7xl font-black mb-4 glow-text" data-aos="zoom-in">HISM CONVERTER PLUGIN:</h1>
+            <p class="text-xl md:text-2xl text-blue-300 mb-8 font-medium" data-aos="fade-up" data-aos-delay="200">Optimize Your Unreal Engine Scenes</p>
+            <div data-aos="fade-up" data-aos-delay="400">
+                <a href="https://www.fab.com/es-mx/listings/362ebd77-07eb-4d29-a33f-4b4c29c4f2a6" class="cta-button inline-block text-white font-bold py-3 px-8 rounded-lg text-lg">
+                    <i class="fas fa-shopping-cart mr-2"></i> Get on Marketplace
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-padding bg-gray-900/50" id="overview">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-1 gap-6" data-aos="fade-right">
+                    <!-- IMAGE: Optimized scene example - Placeholder. Replace with your actual image URL. -->
+                    <img src="images/hism6.png" 
+                         alt="Example of scene optimized with HISM" class="screenshot">
+                    <!-- IMAGE: Plugin interface in Unreal Engine - Placeholder. Replace with your actual image URL. -->
+                    <img src="images/hism4.png" 
+                         alt="HISM Converter Plugin interface in Unreal Engine" class="screenshot">
+                </div>
+                <div class="max-w-2xl" data-aos="fade-left" data-aos-delay="100">
+                    <h2 class="orbitron text-3xl md:text-4xl font-bold mb-8 text-blue-400"><i class="fas fa-cogs mr-3"></i> An Essential Tool for Performance</h2>
+                    <p class="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
+                        The HISM Converter Plugin is a powerful utility tool for the Unreal Engine editor designed to drastically improve the performance of your scenes by optimizing Static Mesh management.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+                        This plugin facilitates the conversion of multiple Static Mesh Actors in the level to a single Actor that uses Hierarchical Instanced Static Mesh (HISM) Components, and vice versa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="features">
+        <div class="container mx-auto px-6">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold text-center mb-16 text-yellow-400" data-aos="zoom-in">
+                <i class="fas fa-star mr-3"></i>
+                Key Scopes and Capabilities
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-compress-alt text-2xl text-orange-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Efficient HISM Conversion</h3>
+                    </div>
+                    <p class="text-gray-300">Quickly transforms groups of Static Mesh Actors into a single HISM Actor, automatically grouping instances by static mesh type. Ideal for repetitive elements like trees or rocks.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-sliders-h text-2xl text-green-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Conversion Control</h3>
+                    </div>
+                    <p class="text-gray-300">Options to automatically delete originals, selective or total conversion, and MaxDrawDistance configuration for fine control.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-undo-alt text-2xl text-blue-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Flexible HISM Reversion</h3>
+                    </div>
+                    <p class="text-gray-300">Converts combined HISM Actors back to individual Static Mesh Actors, allowing you to edit or adjust specific elements after optimization.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="50">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-folder-open text-2xl text-purple-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Metadata Preservation</h3>
+                    </div>
+                    <p class="text-gray-300">Uses a CustomHISMComponent that stores additional metadata, such as the original folder path in the World Outliner, maintaining your scene's organization.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="150">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-puzzle-piece text-2xl text-red-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Integration with Editor Utility Widgets</h3>
+                    </div>
+                    <p class="text-gray-300">Designed to work seamlessly with Unreal Engine's Editor Utility Widgets, providing an intuitive user interface directly within the editor.</p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="250">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chart-line text-2xl text-yellow-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Superior Performance</h3>
+                    </div>
+                    <p class="text-gray-300">Drastically reduces the number of "draw calls" to the GPU, freeing up resources and allowing for more complex and fluid scenes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-gray-900/50" id="benefits">
+        <div class="container mx-auto px-6">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold text-center mb-16 text-blue-400" data-aos="zoom-in">
+                <i class="fas fa-check-circle mr-3"></i>
+                Advantages and Benefits
+            </h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-tachometer-alt text-2xl text-orange-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Superior Performance</h3>
+                    </div>
+                    <p class="text-gray-300">The main advantage is the significant performance improvement by grouping thousands of identical mesh instances into a single component, drastically reducing "draw calls."</p>
+                </div>
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-fast-forward text-2xl text-green-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Agile Workflow</h3>
+                    </div>
+                    <p class="text-gray-300">Accelerates the level optimization process by automating conversion, saving hours of manual work.</p>
+                </div>
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-pencil-ruler text-2xl text-blue-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Iterative Design</h3>
+                    </div>
+                    <p class="text-gray-300">The ability to convert and revert between individual Static Meshes and HISM allows for a non-destructive workflow, facilitating design adjustments post-optimization.</p>
+                </div>
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-sitemap text-2xl text-purple-400 mr-3 icon-glow"></i>
+                        <h3 class="text-xl font-bold text-white">Scene Organization</h3>
+                    </div>
+                    <p class="text-gray-300">Preserving the original folder path helps maintain the logical structure of your World Outliner, even after optimization operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="comparison">
+        <div class="container mx-auto px-6">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold text-center mb-16 text-yellow-400" data-aos="zoom-in">
+                <i class="fas fa-microchip mr-3"></i>
+                Technological Comparison
+            </h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up">
+                    <h3 class="text-xl font-bold text-white mb-2">Hierarchical Instanced Static Mesh (HISM)</h3>
+                    <p class="text-gray-300">This is the core technology used by the plugin. HISM is an evolution of Instanced Static Meshes (ISM) with a hierarchical structure (Octree) for efficient culling and LOD support per instance, ideal for large quantities of identical objects.</p>
+                </div>
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold text-white mb-2">Instanced Static Mesh (ISM)</h3>
+                    <p class="text-gray-300">The basis of HISM. ISMs group multiple instances of the same mesh into a single component to reduce draw calls, but lack the hierarchical culling and LOD optimization offered by HISM.</p>
+                </div>
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up">
+                    <h3 class="text-xl font-bold text-white mb-2">Unreal Engine Foliage Tool</h3>
+                    <p class="text-gray-300">Also uses instancing (HISM/ISM). The HISM Converter Plugin is more general-purpose, allowing you to convert any Static Mesh Actor into HISM instances and offering direct control over the conversion and reversion of pre-existing object groups.</p>
+                </div>
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold text-white mb-2">Individual Static Meshes</h3>
+                    <p class="text-gray-300">The unoptimized alternative, very inefficient for repetitive objects, as each generates its own draw call, quickly leading to performance bottlenecks in complex scenes. The plugin effectively solves this problem.</p>
+                </div>
+                <div class="feature-card p-6 rounded-lg glow-box" data-aos="fade-up">
+                    <h3 class="text-xl font-bold text-white mb-2">Custom Solutions/External Scripts</h3>
+                    <p class="text-gray-300">While some developers may opt to write custom scripts, the HISM Converter Plugin offers an integrated, easy-to-use solution with reversion functions directly within Unreal Engine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-gray-900/50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold text-center mb-12 text-yellow-400" data-aos="zoom-in">
+                <i class="fas fa-video mr-3"></i> Plugin Demonstration
+            </h2>
+            <div class="max-w-6xl mx-auto glow-box rounded-lg overflow-hidden" data-aos="fade-up">
+                <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+                    <iframe 
+                        src="https://www.youtube.com/embed/Syb1Of47ivQ" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 py-12 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8" data-aos="fade-up">
+                <i class="fas fa-cube text-4xl text-yellow-400 icon-glow"></i>
+            </div>
+            <h3 class="orbitron text-2xl font-bold text-white mb-4" data-aos="fade-up" data-aos-delay="100">
+                Optimize Your Scenes Now!
+            </h3>
+            <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                The HISM Converter Plugin is an indispensable tool for any Unreal Engine developer looking to optimize the performance of their scenes with Static Meshes, offering a perfect balance of efficiency, flexibility, and ease of use.
+            </p>
+            <!-- Visit counter added here -->
+            <div class="mt-4 mb-4" data-aos="fade-up" data-aos-delay="250">
+                <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Facsesis1.github.io%2FAcsesis.GitHub.io%2FHISMConverterPlugin.html&icon=github&color=%23198754&style=flat&label=Visitas" alt="Contador de visitas" />
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700">
+                <p class="text-gray-500">
+                    <i class="fas fa-copyright mr-2"></i>
+                    HISM Converter Plugin - Professional Tool for Unreal Engine
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STEP 4: ADD FANCYBOX JS AND INITIALIZATION SCRIPT -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+
+        // Initializes Fancybox on all links with the data-fancybox attribute
+        Fancybox.bind("[data-fancybox]", {
+            // You can add configuration options here if desired
+            // For example, to change the transition animation:
+            // Carousel: { transition: "slide" },
+        });
+    </script>
+</body>
+</html>
