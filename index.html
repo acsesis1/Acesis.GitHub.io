@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acsesis Developer UE - Professional Tools for Unreal Engine</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="icon" href="images/ico.png" type="image/png">
-    
+
     <style>
         /* General Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             color: #e5e7eb;
             line-height: 1.6;
         }
-        .orbitron { font-family: 'Orbitron', monospace; }
-        .glow-text { text-shadow: 0 0 20px #60a5fa, 0 0 40px #3b82f6, 0 0 60px #1d4ed8; }
-        .glow-box { box-shadow: 0 0 30px rgba(96, 165, 250, 0.3), 0 0 60px rgba(59, 130, 246, 0.1); }
+
+        .orbitron {
+            font-family: 'Orbitron', monospace;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px #60a5fa, 0 0 40px #3b82f6, 0 0 60px #1d4ed8;
+        }
+
+        .glow-box {
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.3), 0 0 60px rgba(59, 130, 246, 0.1);
+        }
+
         .card {
             background: rgba(31, 41, 55, 0.4);
             backdrop-filter: blur(10px);
@@ -29,30 +47,49 @@
             border: 1px solid rgba(96, 165, 250, 0.2);
             transition: all 0.3s ease;
         }
+
         .card:hover {
             transform: translateY(-5px) scale(1.02);
             background: rgba(31, 41, 55, 0.6);
             box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
         }
+
         .tech-pattern {
-            background-image: 
+            background-image:
                 radial-gradient(circle at 25% 25%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
         }
-        .icon-glow { filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5)); }
-        .section-padding { padding: 5rem 1rem; }
+
+        .icon-glow {
+            filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5));
+        }
+
+        .section-padding {
+            padding: 5rem 1rem;
+        }
+
         .cta-button {
             font-family: 'Orbitron', monospace;
             transition: all 0.3s ease;
             background: linear-gradient(45deg, #3b82f6, #8b5cf6);
             box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
         }
-        .cta-button:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(139, 92, 246, 0.6); }
-        .screenshot { border-radius: 0.75rem; border: 2px solid rgba(96, 165, 250, 0.3); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(139, 92, 246, 0.6);
+        }
+
+        .screenshot {
+            border-radius: 0.75rem;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
         /* Estilos para el navbar */
         .navbar {
-            background: rgba(15, 15, 35, 0.8); /* Fondo semi-transparente */
+            background: rgba(15, 15, 35, 0.8);
+            /* Fondo semi-transparente */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(96, 165, 250, 0.2);
@@ -63,6 +100,7 @@
             z-index: 1000;
             padding: 1rem 0;
         }
+
         .navbar-link {
             font-family: 'Orbitron', monospace;
             color: #e5e7eb;
@@ -70,19 +108,71 @@
             border-radius: 0.5rem;
             transition: all 0.3s ease;
         }
+
         .navbar-link:hover {
             background: rgba(59, 130, 246, 0.2);
             color: #a78bfa;
             text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
         }
+
+        /* Mobile menu styles */
+        .mobile-menu-button {
+            display: none;
+            color: #e5e7eb;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-button:hover {
+            color: #60a5fa;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 35, 0.98);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(96, 165, 250, 0.2);
+            padding: 1rem 0;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .desktop-menu {
+                display: none !important;
+            }
+
+            .section-padding {
+                padding: 3rem 1rem;
+            }
+        }
     </style>
 </head>
+
 <body class="overflow-x-hidden">
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold orbitron text-white glow-text"><img src="images/ico2.png" alt="Acsesis Logo" class="inline-block h-8 w-8 mr-2">Acsesis Developer UE</a>
+            <a href="index.html" class="text-2xl font-bold orbitron text-white glow-text"><img src="images/ico2.png"
+                    alt="Acsesis Logo" class="inline-block h-8 w-8 mr-2">Acsesis Developer UE</a>
             <div class="flex space-x-6">
                 <a href="index.html" class="navbar-link">Home</a>
                 <a href="GM-LIGHTMAP-AUDITOR.html" class="navbar-link">GM Lightmap Auditor</a>
@@ -92,16 +182,18 @@
         </div>
     </nav>
 
-    <header class="relative overflow-hidden min-h-screen flex items-center justify-center text-center pt-24"> <!-- Added pt-24 to account for fixed navbar -->
+    <header class="relative overflow-hidden min-h-screen flex items-center justify-center text-center pt-24">
+        <!-- Added pt-24 to account for fixed navbar -->
         <div class="tech-pattern absolute inset-0"></div>
         <div class="container mx-auto px-6 py-16 relative z-10">
             <div class="max-w-4xl mx-auto mb-12" data-aos="zoom-in-up">
                 <!-- Company Logo / Placeholder -->
-                <img src="images/Acsesi_Logo.png" 
-                     alt="Acsesis Developer UE Logo" class="screenshot mx-auto">
+                <img src="images/Acsesi_Logo.png" alt="Acsesis Developer UE Logo" class="screenshot mx-auto">
             </div>
-            <h1 class="orbitron text-5xl md:text-7xl font-black mb-4 glow-text" data-aos="zoom-in">ACSESIS DEVELOPER UE</h1>
-            <p class="text-xl md:text-2xl text-blue-300 mb-8 font-medium" data-aos="fade-up" data-aos-delay="200">Professional Tools for Optimization and Auditing in Unreal Engine</p>
+            <h1 class="orbitron text-5xl md:text-7xl font-black mb-4 glow-text" data-aos="zoom-in">ACSESIS DEVELOPER UE
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-300 mb-8 font-medium" data-aos="fade-up" data-aos-delay="200">
+                Professional Tools for Optimization and Auditing in Unreal Engine</p>
             <div data-aos="fade-up" data-aos-delay="400">
                 <a href="#plugins" class="cta-button inline-block text-white font-bold py-3 px-8 rounded-lg text-lg">
                     <i class="fas fa-tools mr-2"></i> Explore Our Plugins
@@ -119,39 +211,44 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card for GM Lightmap Auditor -->
                 <div class="card p-8 rounded-lg glow-box flex flex-col items-center text-center" data-aos="fade-up">
-                    <img src="images/LightmapAuditor.png" 
-                         alt="GM Lightmap Auditor Thumbnail" class="screenshot mb-6">
+                    <img src="images/LightmapAuditor.png" alt="GM Lightmap Auditor Thumbnail" class="screenshot mb-6">
                     <h3 class="orbitron text-2xl font-bold text-white mb-4">GM LIGHTMAP AUDITOR</h3>
                     <p class="text-gray-300 mb-6">
-                        Audit, repair, and bake static lighting in Unreal Engine with ease. Identify issues, visualize errors, and optimize your scenes for a perfect render.
+                        Audit, repair, and bake static lighting in Unreal Engine with ease. Identify issues, visualize
+                        errors, and optimize your scenes for a perfect render.
                     </p>
-                    <a href="GM-LIGHTMAP-AUDITOR.html" class="cta-button inline-block text-white font-bold py-2 px-6 rounded-lg text-md">
+                    <a href="GM-LIGHTMAP-AUDITOR.html"
+                        class="cta-button inline-block text-white font-bold py-2 px-6 rounded-lg text-md">
                         <i class="fas fa-external-link-alt mr-2"></i> View Details
                     </a>
                 </div>
 
                 <!-- Card for HISM Converter Plugin -->
-                <div class="card p-8 rounded-lg glow-box flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
-                    <img src="images/hism.png" 
-                         alt="HISM Converter Plugin Thumbnail" class="screenshot mb-6">
+                <div class="card p-8 rounded-lg glow-box flex flex-col items-center text-center" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <img src="images/hism.png" alt="HISM Converter Plugin Thumbnail" class="screenshot mb-6">
                     <h3 class="orbitron text-2xl font-bold text-white mb-4">HISM CONVERTER PLUGIN</h3>
                     <p class="text-gray-300 mb-6">
-                        Drastically optimize the performance of your Unreal Engine scenes by converting Static Meshes to HISM and vice versa, reducing draw calls and improving fluidity.
+                        Drastically optimize the performance of your Unreal Engine scenes by converting Static Meshes to
+                        HISM and vice versa, reducing draw calls and improving fluidity.
                     </p>
-                    <a href="HISMConverterPlugin.html" class="cta-button inline-block text-white font-bold py-2 px-6 rounded-lg text-md">
+                    <a href="HISMConverterPlugin.html"
+                        class="cta-button inline-block text-white font-bold py-2 px-6 rounded-lg text-md">
                         <i class="fas fa-external-link-alt mr-2"></i> View Details
                     </a>
                 </div>
 
                 <!-- Card for GM Collision Optimization Suite -->
-                <div class="card p-8 rounded-lg glow-box flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="400">
-                    <img src="images/logo3.png" 
-                         alt="GM Collision Optimization Suite Thumbnail" class="screenshot mb-6">
+                <div class="card p-8 rounded-lg glow-box flex flex-col items-center text-center" data-aos="fade-up"
+                    data-aos-delay="400">
+                    <img src="images/logo3.png" alt="GM Collision Optimization Suite Thumbnail" class="screenshot mb-6">
                     <h3 class="orbitron text-2xl font-bold text-white mb-4">GM COLLISION OPTIMIZATION SUITE</h3>
                     <p class="text-gray-300 mb-6">
-                        Create, simplify, and preview optimized collisions in real-time directly in the Static Mesh editor using the power of Geometry Script.
+                        Create, simplify, and preview optimized collisions in real-time directly in the Static Mesh
+                        editor using the power of Geometry Script.
                     </p>
-                    <a href="GM_CollisionOptimizationSuite.html" class="cta-button inline-block text-white font-bold py-2 px-6 rounded-lg text-md">
+                    <a href="GM_CollisionOptimizationSuite.html"
+                        class="cta-button inline-block text-white font-bold py-2 px-6 rounded-lg text-md">
                         <i class="fas fa-external-link-alt mr-2"></i> View Details
                     </a>
                 </div>
@@ -168,11 +265,13 @@
                 Innovation for Unreal Engine Developers
             </h3>
             <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                At Acsesis Developer UE, we are dedicated to creating powerful and efficient tools to enhance your workflow and take your Unreal Engine projects to the next level.
+                At Acsesis Developer UE, we are dedicated to creating powerful and efficient tools to enhance your
+                workflow and take your Unreal Engine projects to the next level.
             </p>
             <!-- Visit counter added here -->
             <div class="mt-4 mb-4" data-aos="fade-up" data-aos-delay="250">
-                <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Facsesis1.github.io%2FAcsesis.GitHub.io%2F&icon=github&color=%23198754&style=flat&label=Visitas" alt="Contador de visitas" />
+                <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Facsesis1.github.io%2FAcsesis.GitHub.io%2F&icon=github&color=%23198754&style=flat&label=Visitas"
+                    alt="Contador de visitas" />
             </div>
             <div class="mt-8 pt-8 border-t border-gray-700">
                 <p class="text-gray-500">
@@ -192,4 +291,5 @@
         });
     </script>
 </body>
+
 </html>
