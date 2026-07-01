@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GM Lightmap Auditor - Static Lighting Audit Tool for Unreal Engine</title>
+  <title>GM Lightmap Auditor - Lighting Audit Tool for Unreal Engine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -44,18 +44,18 @@
 
 <!-- ============ NAV ============ -->
 <nav data-nav="" style="position:fixed;top:0;left:0;width:100%;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(8,8,8,0.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.03);transition:background .3s,border-color .3s;">
-  <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+  <a href="index_es.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
     <span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid #76B900;color:#76B900;border-radius:4px;font-size:15px;"><img src="images/ico2.png" style="width:16px;height:16px;object-fit:contain;"></span>
     <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#fff;letter-spacing:-0.01em;">Acsesis <span style="color:#76B900;">Developer UE</span></span>
   </a>
   <div style="display:flex;gap:24px;align-items:center;font-size:13px;color:#9a9a92;" data-navlinks="">
-    <a href="index.html" style="color:#9a9a92;text-decoration:none;font-weight:500;" style-hover="color:#fff;">Home</a>
-    <a href="GM-LIGHTMAP-AUDITOR.html" style="color:#fff;text-decoration:none;font-weight:600;border-bottom:2px solid #76B900;padding-bottom:2px;">Lightmap Auditor</a>
-    <a href="HISMConverterPlugin.html" style="color:#9a9a92;text-decoration:none;font-weight:500;" style-hover="color:#fff;">HISM Converter</a>
-    <a href="GM_CollisionOptimizationSuite.html" style="color:#9a9a92;text-decoration:none;font-weight:500;" style-hover="color:#fff;">Collision Suite</a>
-    <a href="GM_NTC_PLUGIN.html" style="color:#9a9a92;text-decoration:none;font-weight:500;" style-hover="color:#fff;">GM NTC Plugin</a>
+    <a href="index_es.html" style="color:#9a9a92;text-decoration:none;font-weight:500;" style-hover="color:#fff;">Home</a>
+    <a href="GM-LIGHTMAP-AUDITOR_es.html" style="color:#fff;text-decoration:none;font-weight:600;border-bottom:2px solid #76B900;padding-bottom:2px;">Lightmap Auditor</a>
+    <a href="HISMConverterPlugin_es.html" style="color:#9a9a92;text-decoration:none;font-weight:500;" style-hover="color:#fff;">HISM Converter</a>
+    <a href="GM_CollisionOptimizationSuite_es.html" style="color:#9a9a92;text-decoration:none;font-weight:500;" style-hover="color:#fff;">Collision Suite</a>
+    <a href="GM_NTC_PLUGIN_es.html" style="color:#9a9a92;text-decoration:none;font-weight:500;" style-hover="color:#fff;">GM NTC Plugin</a>
     <span style="color:rgba(255,255,255,0.15);">|</span>
-    <a href="GM-LIGHTMAP-AUDITOR_es.html" style="color:#9a9a92;text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px;" style-hover="color:#76B900;"><i class="fa-solid fa-earth-americas" style="font-size:11px;"></i> ES</a>
+    <a href="GM-LIGHTMAP-AUDITOR.html" style="color:#9a9a92;text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px;" style-hover="color:#76B900;"><i class="fa-solid fa-earth-americas" style="font-size:11px;"></i> EN</a>
   </div>
   <div style="display:none;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;cursor:pointer;" data-menu-toggle=""><i class="fa-solid fa-bars"></i></div>
 </nav>
@@ -66,20 +66,20 @@
     <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff;">MENU</span>
     <div style="font-size:20px;color:#9a9a92;cursor:pointer;" data-menu-close=""><i class="fa-solid fa-xmark"></i></div>
   </div>
-  <a href="index.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;" style-hover="color:#fff;">Home</a>
-  <a href="GM-LIGHTMAP-AUDITOR.html" style="color:#76B900;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;font-weight:600;" style-hover="color:#fff;">GM Lightmap Auditor</a>
-  <a href="HISMConverterPlugin.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;" style-hover="color:#fff;">HISM Converter</a>
-  <a href="GM_CollisionOptimizationSuite.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;" style-hover="color:#fff;">Collision Suite</a>
-  <a href="GM_NTC_PLUGIN.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;" style-hover="color:#fff;">GM NTC Plugin</a>
+  <a href="index_es.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;" style-hover="color:#fff;">Home</a>
+  <a href="GM-LIGHTMAP-AUDITOR_es.html" style="color:#76B900;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;font-weight:600;" style-hover="color:#fff;">GM Lightmap Auditor</a>
+  <a href="HISMConverterPlugin_es.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;" style-hover="color:#fff;">HISM Converter</a>
+  <a href="GM_CollisionOptimizationSuite_es.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;" style-hover="color:#fff;">Collision Suite</a>
+  <a href="GM_NTC_PLUGIN_es.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;" style-hover="color:#fff;">GM NTC Plugin</a>
   <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:10px 0;">
-  <a href="GM-LIGHTMAP-AUDITOR_es.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;display:flex;align-items:center;gap:8px;" style-hover="color:#76B900;"><i class="fa-solid fa-earth-americas"></i> Español</a>
+  <a href="GM-LIGHTMAP-AUDITOR.html" style="color:#9a9a92;text-decoration:none;font-size:16px;font-family:'Space Grotesk',sans-serif;display:flex;align-items:center;gap:8px;" style-hover="color:#76B900;"><i class="fa-solid fa-earth-americas"></i> English</a>
 </div>
 
 <!-- ============ HERO SECTION ============ -->
 <section style="position:relative;background:#080808;padding:140px 24px 70px;text-align:center;overflow:hidden;background-image:radial-gradient(ellipse 65% 50% at 50% 10%,rgba(118,185,0,0.06),transparent 60%);">
   <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
     <div style="max-width:860px;margin:0 auto 30px;">
-      <a href="images/plugin-interface.png" data-fancybox="gallery" data-caption="GM Lightmap Auditor User Interface">
+      <a href="images/plugin-interface.png" data-fancybox="gallery" data-caption="Interfaz de GM Lightmap Auditor">
         <img src="images/plugin-interface.png" alt="GM Lightmap Auditor UI" class="screenshot" style="width:100%;height:auto;margin:0 auto;">
       </a>
     </div>
@@ -87,10 +87,10 @@
       GM <span style="color:#76B900;">LIGHTMAP AUDITOR</span>
     </h1>
     <p style="font-size:clamp(16px,2vw,22px);color:#b4b4ac;max-width:760px;margin:0 auto 36px;line-height:1.6;">
-      Audit, Repair, and Bake Static Lighting all in one place. Take total control over your lightmaps.
+      Audita, repara y compila iluminación estática desde una sola ventana. Todo el control sobre tus lightmaps.
     </p>
     <div style="display:flex;justify-content:center;gap:14px;">
-      <a href="https://www.fab.com/es-mx/listings/71ece676-98af-4f98-862b-4ac34fc3f611" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#76B900;color:#0a0a0a;font-weight:600;font-size:16px;padding:14px 28px;border-radius:6px;text-decoration:none;box-shadow:0 0 30px rgba(118,185,0,0.2);" style-hover="background:#86d000;box-shadow:0 0 40px rgba(118,185,0,0.4);"><i class="fa-solid fa-shopping-cart"></i> Get on FAB</a>
+      <a href="https://www.fab.com/es-mx/listings/71ece676-98af-4f98-862b-4ac34fc3f611" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#76B900;color:#0a0a0a;font-weight:600;font-size:16px;padding:14px 28px;border-radius:6px;text-decoration:none;box-shadow:0 0 30px rgba(118,185,0,0.2);" style-hover="background:#86d000;box-shadow:0 0 40px rgba(118,185,0,0.4);"><i class="fa-solid fa-shopping-cart"></i> Obtener en FAB</a>
     </div>
   </div>
 </section>
@@ -99,37 +99,37 @@
 <section style="background:#0e0e0e;padding:80px 24px;border-top:1px solid rgba(255,255,255,0.03);background-image:linear-gradient(rgba(255,255,255,0.005) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.005) 1px,transparent 1px);background-size:48px 48px;">
   <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:center;">
     <div>
-      <a href="images/GM LIGHTMAP AUDITOR.png" data-fancybox="gallery" data-caption="GM Lightmap Auditor interface showing logs and diagnostics">
+      <a href="images/GM LIGHTMAP AUDITOR.png" data-fancybox="gallery" data-caption="Interfaz de GM Lightmap Auditor mostrando registros y diagnósticos">
         <img src="images/GM LIGHTMAP AUDITOR.png" alt="Lightmap Auditor Interface Log" class="screenshot">
       </a>
     </div>
     <div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.25em;color:#76B900;margin-bottom:12px;">[ EFFICIENT WORKFLOW ]</div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,4.5vw,36px);color:#fff;margin-bottom:20px;line-height:1.15;">Optimize lighting without baking issues.</h2>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.25em;color:#76B900;margin-bottom:12px;">[ WORKFLOW EFICIENTE ]</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,4.5vw,36px);color:#fff;margin-bottom:20px;line-height:1.15;">Optimiza tu iluminación sin fallos.</h2>
       <p style="color:#b4b4ac;font-size:15px;line-height:1.7;margin-bottom:28px;">
-        Tired of unexplained lighting build failures? Wasting hours hunting down actors with broken UVs or inadequate lightmap resolutions? <strong style="color:#fff;">Reclaim control over your static lighting.</strong>
+        ¿Cansado de fallos inexplicables al compilar luces? ¿Horas perdidas buscando objetos con UVs rotos o resoluciones inadecuadas? <strong style="color:#fff;">Reclama el control sobre tu iluminación estática.</strong>
       </p>
 
       <div style="display:flex;flex-direction:column;gap:18px;">
         <div style="display:flex;gap:16px;align-items:flex-start;">
           <span style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(118,185,0,0.1);border:1px solid rgba(118,185,0,0.2);color:#76B900;border-radius:6px;font-size:14px;"><i class="fa-solid fa-play"></i></span>
           <div>
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;margin:0 0 4px;">Audit Actions</h4>
-            <p style="font-size:13px;color:#9a9a92;line-height:1.5;">Scan the entire level or selected meshes, fix all detected problems with one click, and visualize issues in the viewport.</p>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;margin:0 0 4px;">Acciones de Auditoría</h4>
+            <p style="font-size:13px;color:#9a9a92;line-height:1.5;">Escanea el nivel completo o selección, corrige problemas automáticamente y previsualiza anomalías con materiales de depuración.</p>
           </div>
         </div>
         <div style="display:flex;gap:16px;align-items:flex-start;">
           <span style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(118,185,0,0.1);border:1px solid rgba(118,185,0,0.2);color:#76B900;border-radius:6px;font-size:14px;"><i class="fa-solid fa-filter"></i></span>
           <div>
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;margin:0 0 4px;">Severity Filters</h4>
-            <p style="font-size:13px;color:#9a9a92;line-height:1.5;">Filter log messages and viewport visualization by severity: Critical (red), Warning (yellow), Info (blue), or OK (green).</p>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;margin:0 0 4px;">Filtros de Gravedad</h4>
+            <p style="font-size:13px;color:#9a9a92;line-height:1.5;">Filtra registros y la previsualización del viewport por importancia: Crítico (rojo), Advertencia (amarillo), Info (azul) u OK (verde).</p>
           </div>
         </div>
         <div style="display:flex;gap:16px;align-items:flex-start;">
           <span style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(118,185,0,0.1);border:1px solid rgba(118,185,0,0.2);color:#76B900;border-radius:6px;font-size:14px;"><i class="fa-solid fa-lightbulb"></i></span>
           <div>
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;margin:0 0 4px;">1-Click Baking</h4>
-            <p style="font-size:13px;color:#9a9a92;line-height:1.5;">Select quality preset (Production, High, Medium, Preview) and start the CPU/GPU Lightmass build directly from the tool.</p>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;margin:0 0 4px;">Bake en un Clic</h4>
+            <p style="font-size:13px;color:#9a9a92;line-height:1.5;">Configura calidad (Production, High, Medium, Preview) e inicia el cocinado de CPU/GPU Lightmass directamente.</p>
           </div>
         </div>
       </div>
@@ -141,46 +141,46 @@
 <section style="background:#080808;padding:80px 24px;border-top:1px solid rgba(255,255,255,0.03);">
   <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:center;">
     <div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.25em;color:#76B900;margin-bottom:12px;">[ INTELLIGENT CONFIGURATION ]</div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,4.5vw,36px);color:#fff;margin-bottom:20px;line-height:1.15;">Absolute control.</h2>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.25em;color:#76B900;margin-bottom:12px;">[ CONFIGURACIÓN INTELIGENTE ]</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,4.5vw,36px);color:#fff;margin-bottom:20px;line-height:1.15;">Control absoluto.</h2>
       <p style="color:#b4b4ac;font-size:15px;line-height:1.7;margin-bottom:28px;">
-        Fine-tune the plugin to match your project's quality standards with granular profiles and custom parameters.
+        Ajusta el plugin a los estándares de calidad de tu juego mediante perfiles y reglas granulares.
       </p>
 
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px;">
         <li style="display:flex;gap:12px;align-items:flex-start;">
           <i class="fa-solid fa-circle-check" style="color:#76B900;margin-top:4px;"></i>
           <div>
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;">Adaptive Resolution Calculation</h4>
-            <p style="font-size:13px;color:#9a9a92;line-height:1.5;margin-top:2px;">Define texel density per square meter and the plugin automatically calculates the optimal resolution based on the real scale of each mesh.</p>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;">Resolución Adaptativa</h4>
+            <p style="font-size:13px;color:#9a9a92;line-height:1.5;margin-top:2px;">Define la densidad de téxeles por metro cuadrado y el plugin calculará automáticamente la resolución óptima según la escala real de cada mesh.</p>
           </div>
         </li>
         <li style="display:flex;gap:12px;align-items:flex-start;">
           <i class="fa-solid fa-circle-check" style="color:#76B900;margin-top:4px;"></i>
           <div>
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;">Project Profiles</h4>
-            <p style="font-size:13px;color:#9a9a92;line-height:1.5;margin-top:2px;">Instantly switch between preset profiles like ArchViz Offline, Mobile, or PC/Console to adjust the warning thresholds.</p>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;">Perfiles de Proyecto</h4>
+            <p style="font-size:13px;color:#9a9a92;line-height:1.5;margin-top:2px;">Alterna instantáneamente entre estándares como ArchViz Offline, Mobile o PC/Console para reajustar los límites de advertencia.</p>
           </div>
         </li>
         <li style="display:flex;gap:12px;align-items:flex-start;">
           <i class="fa-solid fa-circle-check" style="color:#76B900;margin-top:4px;"></i>
           <div>
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;">Filtering and Exclusion System</h4>
-            <p style="font-size:13px;color:#9a9a92;line-height:1.5;margin-top:2px;">Ignore specific assets, folder paths, or non-opaque materials to prevent unnecessary false positives in the audit.</p>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#fff;">Reglas de Exclusión</h4>
+            <p style="font-size:13px;color:#9a9a92;line-height:1.5;margin-top:2px;">Ignora meshes específicos, carpetas completas o materiales transparentes para evitar falsos positivos innecesarios.</p>
           </div>
         </li>
       </ul>
     </div>
     <div style="background:#0c0c0c;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:32px;text-align:center;">
       <div style="display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:rgba(118,185,0,0.1);border:1px solid rgba(118,185,0,0.25);color:#76B900;border-radius:20px;font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:20px;">
-        <i class="fa-solid fa-palette"></i> Visual Customization
+        <i class="fa-solid fa-palette"></i> Depuración Visual
       </div>
       <p style="color:#b4b4ac;font-size:14px;line-height:1.6;margin-bottom:24px;font-style:italic;">
-        "Configure your own debug materials and log colors for a user experience that adapts perfectly to your workflow style."
+        "Configura tus propios materiales de depuración y colores de log para una experiencia que se adapte al estilo visual de tu workflow."
       </p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;">
-        <div style="padding:10px;background:rgba(224,85,85,0.1);border:1px solid rgba(224,85,85,0.3);color:#e07777;border-radius:4px;">CRITICAL</div>
-        <div style="padding:10px;background:rgba(228,161,58,0.1);border:1px solid rgba(228,161,58,0.3);color:#e8a13a;border-radius:4px;">WARNING</div>
+        <div style="padding:10px;background:rgba(224,85,85,0.1);border:1px solid rgba(224,85,85,0.3);color:#e07777;border-radius:4px;">CRÍTICO</div>
+        <div style="padding:10px;background:rgba(228,161,58,0.1);border:1px solid rgba(228,161,58,0.3);color:#e8a13a;border-radius:4px;">ADVERTENCIA</div>
         <div style="padding:10px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:#60a5fa;border-radius:4px;">INFO</div>
       </div>
     </div>
@@ -191,26 +191,26 @@
 <section style="background:#0e0e0e;padding:80px 24px;border-top:1px solid rgba(255,255,255,0.03);">
   <div style="max-width:1200px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:60px;">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.25em;color:#76B900;margin-bottom:12px;">[ ACTION SCREENSHOTS ]</div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,40px);color:#fff;margin:0;">Plugin in Action</h2>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.25em;color:#76B900;margin-bottom:12px;">[ CAPTURAS EN ACCIÓN ]</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,40px);color:#fff;margin:0;">El Plugin en Funcionamiento</h2>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
       <div style="display:flex;flex-direction:column;gap:12px;text-align:center;">
-        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;color:#fff;font-weight:600;">1. Configure Your Settings</h4>
-        <a href="images/setting_lightmap.png" data-fancybox="gallery" data-caption="Project Settings details of Lightmap Auditor panel">
+        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;color:#fff;font-weight:600;">1. Configura tus Ajustes</h4>
+        <a href="images/setting_lightmap.png" data-fancybox="gallery" data-caption="Detalles del panel de configuracion del Lightmap Auditor">
           <img src="images/setting_lightmap.png" alt="Project Settings configuration" class="screenshot">
         </a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;text-align:center;">
-        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;color:#fff;font-weight:600;">2. Visualize Issues</h4>
-        <a href="images/problem-visualization.png" data-fancybox="gallery" data-caption="Problems visualized directly in the viewport with debug colors">
+        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;color:#fff;font-weight:600;">2. Visualiza Problemas</h4>
+        <a href="images/problem-visualization.png" data-fancybox="gallery" data-caption="Problemas visualizados directamente en el viewport con colores especificos">
           <img src="images/problem-visualization.png" alt="Viewport problem visualization" class="screenshot">
         </a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;text-align:center;">
-        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;color:#fff;font-weight:600;">3. Bake with Confidence</h4>
-        <a href="images/bake-in-progress.png" data-fancybox="gallery" data-caption="Lighting build progress started directly from the tool using GPU Lightmass">
+        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;color:#fff;font-weight:600;">3. Compila con Confianza</h4>
+        <a href="images/bake-in-progress.png" data-fancybox="gallery" data-caption="Compilacion iniciada desde el plugin usando GPU Lightmass">
           <img src="images/bake-in-progress.png" alt="Lighting build progress" class="screenshot">
         </a>
       </div>
@@ -222,56 +222,56 @@
 <section style="background:#080808;padding:80px 24px;border-top:1px solid rgba(255,255,255,0.03);">
   <div style="max-width:1200px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:60px;">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.25em;color:#76B900;margin-bottom:12px;">[ VERSATILITY ]</div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,40px);color:#fff;margin:0;">Core Features</h2>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.25em;color:#76B900;margin-bottom:12px;">[ VERSATILIDAD ]</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,40px);color:#fff;margin:0;">Características Principales</h2>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;">
       <!-- Feature 1 -->
       <div style="background:#0c0c0c;border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:26px;">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-clipboard-check" style="color:#76B900;"></i> Complete Audit</h3>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-clipboard-check" style="color:#76B900;"></i> Auditoría Completa</h3>
         <p style="color:#9a9a92;font-size:14px;line-height:1.6;">
-          Scans all Static Mesh Actors in the active level. Identifies critical UV errors and quality warning parameters while ignoring movable meshes to avoid noise.
+          Analiza cualquier Static Mesh Actor. Detecta errores críticos y advertencias de calidad ignorando componentes móviles para evitar falsos positivos.
         </p>
       </div>
 
       <!-- Feature 2 -->
       <div style="background:#0c0c0c;border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:26px;">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-compress-arrows-alt" style="color:#76B900;"></i> UV Channel Unification</h3>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-compress-arrows-alt" style="color:#76B900;"></i> Unificación de LODs</h3>
         <p style="color:#9a9a92;font-size:14px;line-height:1.6;">
-          Forces secondary LOD meshes to inherit and reuse lightmap UV layout channel 1, preventing errors without breaking geometrical optimizations.
+          Colapsa el mesh de forma lógica y no destructiva, forzando a los LODs secundarios a reutilizar el canal 1 de UVs sin perder las optimizaciones geométricas del artista.
         </p>
       </div>
 
       <!-- Feature 3 -->
       <div style="background:#0c0c0c;border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:26px;">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-chart-line" style="color:#76B900;"></i> Accurate Logs</h3>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-chart-line" style="color:#76B900;"></i> Diagnósticos Precisos</h3>
         <p style="color:#9a9a92;font-size:14px;line-height:1.6;">
-          Intelligent real-time logging architecture. Pinpoints exact actors and issues inside the scene with custom categories and severity filters.
+          Nueva arquitectura de logs. Identifica anomalías reales en la jerarquía de UVs evitando inconsistencias falsas y focalizando el esfuerzo.
         </p>
       </div>
 
       <!-- Feature 4 -->
       <div style="background:#0c0c0c;border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:26px;">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-ruler-combined" style="color:#76B900;"></i> Resolution Management</h3>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-ruler-combined" style="color:#76B900;"></i> Ajustes de Resolución</h3>
         <p style="color:#9a9a92;font-size:14px;line-height:1.6;">
-          Automatically scales lightmap resolutions across the world based on custom texel density, maintaining uniform lighting and sharp shadows.
+          Calcula y reajusta la resolución de los lightmaps a escala de mundo basándose en los perfiles de tu proyecto, asegurando sombras uniformes.
         </p>
       </div>
 
       <!-- Feature 5 -->
       <div style="background:#0c0c0c;border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:26px;">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-sliders-h" style="color:#76B900;"></i> Lighting Tools</h3>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-sliders-h" style="color:#76B900;"></i> Integración de Luces</h3>
         <p style="color:#9a9a92;font-size:14px;line-height:1.6;">
-          Bake static lighting with a single click. Choose quality presets and check for system GPU Lightmass prerequisites seamlessly.
+          Gestión unificada. Inicia cocinados de luces CPU/GPU y verifica previamente si el sistema cuenta con los prerrequisitos correctos para GPU Lightmass.
         </p>
       </div>
 
       <!-- Feature 6 -->
       <div style="background:#0c0c0c;border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:26px;">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-hand-paper" style="color:#76B900;"></i> Mobility Preservation</h3>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-hand-paper" style="color:#76B900;"></i> Respeto a Movilidad</h3>
         <p style="color:#9a9a92;font-size:14px;line-height:1.6;">
-          Strictly respects actor mobility (Movable, Stationary) to avoid accidental static lighting conversions that can break gameplay logic.
+          Respeta estrictamente la movilidad (Movable/Stationary) de tus componentes para evitar conversiones accidentales que dañen la lógica de gameplay.
         </p>
       </div>
     </div>
@@ -281,7 +281,7 @@
 <!-- ============ VIDEO DEMO ============ -->
 <section style="background:#0e0e0e;padding:80px 24px;border-top:1px solid rgba(255,255,255,0.03);">
   <div style="max-width:1200px;margin:0 auto;text-align:center;">
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,40px);color:#fff;margin-bottom:40px;">Video Demonstration</h2>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,40px);color:#fff;margin-bottom:40px;">Demo en Vídeo</h2>
     <div style="max-width:800px;margin:0 auto;border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,0.6);">
       <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
         <iframe src="https://www.youtube.com/embed/9y6dS42F4y4" title="GM Lightmap Auditor Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
@@ -299,30 +299,30 @@
           <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid #76B900;color:#76B900;border-radius:4px;font-size:14px;"><img src="images/ico2.png" style="width:14px;height:14px;object-fit:contain;"></span>
           <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#fff;">Acsesis Developer UE</span>
         </div>
-        <p style="font-size:13px;color:#777;margin:0;line-height:1.5;">Professional optimization tools and rendering utilities for Unreal Engine developers.</p>
+        <p style="font-size:13px;color:#777;margin:0;line-height:1.5;">Herramientas profesionales de optimización y utilidades de renderizado para Unreal Engine.</p>
       </div>
       <div>
-        <h4 style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#fff;margin:0 0 14px;">PRODUCTS</h4>
+        <h4 style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#fff;margin:0 0 14px;">PRODUCTOS</h4>
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;font-size:13px;">
-          <li><a href="GM-LIGHTMAP-AUDITOR.html" style="color:#76B900;text-decoration:none;">Lightmap Auditor</a></li>
-          <li><a href="HISMConverterPlugin.html" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">HISM Converter</a></li>
-          <li><a href="GM_CollisionOptimizationSuite.html" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">Collision Suite</a></li>
-          <li><a href="GM_NTC_PLUGIN.html" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">GM Direct NTC</a></li>
+          <li><a href="GM-LIGHTMAP-AUDITOR_es.html" style="color:#76B900;text-decoration:none;">Lightmap Auditor</a></li>
+          <li><a href="HISMConverterPlugin_es.html" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">HISM Converter</a></li>
+          <li><a href="GM_CollisionOptimizationSuite_es.html" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">Collision Suite</a></li>
+          <li><a href="GM_NTC_PLUGIN_es.html" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">GM Direct NTC</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#fff;margin:0 0 14px;">RESOURCES</h4>
+        <h4 style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#fff;margin:0 0 14px;">RECURSOS</h4>
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;font-size:13px;">
-          <li><a href="#" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">Documentation</a></li>
+          <li><a href="#" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">Documentación</a></li>
           <li><a href="#" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">Changelog</a></li>
           <li><a href="#" style="color:#777;text-decoration:none;" style-hover="color:#76B900;">Roadmap</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#fff;margin:0 0 14px;">CONTACT</h4>
+        <h4 style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#fff;margin:0 0 14px;">CONTACTO</h4>
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;font-size:13px;">
           <li><a href="mailto:ing.gonzalo.morales@gmail.com" style="color:#777;text-decoration:none;" style-hover="color:#76B900;"><i class="fa-solid fa-envelope" style="margin-right:8px;"></i>Email</a></li>
-          <li><a href="https://acsesis1.github.io/Acsesis.GitHub.io/" target="_blank" style="color:#777;text-decoration:none;" style-hover="color:#76B900;"><i class="fa-solid fa-globe" style="margin-right:8px;"></i>Previous Web</a></li>
+          <li><a href="https://acsesis1.github.io/Acsesis.GitHub.io/" target="_blank" style="color:#777;text-decoration:none;" style-hover="color:#76B900;"><i class="fa-solid fa-globe" style="margin-right:8px;"></i>Web Anterior</a></li>
         </ul>
       </div>
     </div>
@@ -337,7 +337,7 @@
 </footer>
 
 <!-- scroll to top -->
-<div data-scrolltop="" aria-label="Scroll Up" style="position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:8px;background:#76B900;color:#0a0a0a;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:40;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 18px rgba(118,185,0,0.4);"><i class="fa-solid fa-arrow-up"></i></div>
+<div data-scrolltop="" aria-label="Subir" style="position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:8px;background:#76B900;color:#0a0a0a;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:40;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 18px rgba(118,185,0,0.4);"><i class="fa-solid fa-arrow-up"></i></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
