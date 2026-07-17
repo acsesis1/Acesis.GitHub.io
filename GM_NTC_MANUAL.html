@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GM Direct NTC — User Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#070707; --panel:#0f0f0f; --line:rgba(255,255,255,0.08); --green:#76B900; --txt:#d6d8d0; --dim:#8a8d80; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--txt); font-family:'Inter',sans-serif; font-size:15px; line-height:1.65; }
+  a { color:var(--green); text-decoration:none; }
+  .wrap { max-width:900px; margin:0 auto; padding:40px 24px 100px; }
+  header { border-bottom:1px solid var(--line); padding:26px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
+           position:sticky; top:0; background:rgba(7,7,7,0.95); backdrop-filter:blur(8px); z-index:50; }
+  header h1 { font-family:'Space Grotesk',sans-serif; font-size:20px; color:#fff; letter-spacing:-0.01em; }
+  header h1 span { color:var(--green); }
+  .lang-toggle button { background:none; border:1px solid var(--line); color:var(--dim); font-family:'IBM Plex Mono',monospace;
+    font-size:12px; padding:7px 16px; cursor:pointer; border-radius:6px; margin-left:6px; }
+  .lang-toggle button.active { background:var(--green); color:#0a0a0a; border-color:var(--green); font-weight:500; }
+  nav.toc { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px 24px; margin:34px 0; }
+  nav.toc ol { margin-left:20px; }
+  nav.toc a { display:inline-block; padding:3px 0; color:var(--txt); }
+  nav.toc a:hover { color:var(--green); }
+  h2 { font-family:'Space Grotesk',sans-serif; color:#fff; font-size:26px; margin:56px 0 6px; letter-spacing:-0.01em; scroll-margin-top:90px; }
+  h2 .num { color:var(--green); font-family:'IBM Plex Mono',monospace; font-size:15px; margin-right:10px; }
+  h3 { font-family:'Space Grotesk',sans-serif; color:#eee; font-size:18px; margin:28px 0 6px; }
+  p { margin:12px 0; color:var(--txt); }
+  ul,ol { margin:12px 0 12px 24px; }
+  li { margin:5px 0; }
+  code { font-family:'IBM Plex Mono',monospace; font-size:13px; background:#151515; border:1px solid var(--line); border-radius:4px; padding:1px 7px; color:#a4d24a; }
+  .shot { margin:22px 0; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--panel); }
+  .shot img { display:block; width:100%; height:auto; cursor:zoom-in; }
+  .shot figcaption { font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--dim); padding:10px 16px; border-top:1px solid var(--line); }
+  .tip { border-left:3px solid var(--green); background:rgba(118,185,0,0.06); padding:12px 18px; border-radius:0 6px 6px 0; margin:16px 0; }
+  .warn { border-left:3px solid #e0a040; background:rgba(224,160,64,0.07); padding:12px 18px; border-radius:0 6px 6px 0; margin:16px 0; }
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:14px; }
+  th,td { border:1px solid var(--line); padding:9px 12px; text-align:left; }
+  th { background:#111; color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:500; }
+  .lightbox { position:fixed; inset:0; background:rgba(0,0,0,0.92); display:none; align-items:center; justify-content:center; z-index:100; cursor:zoom-out; padding:30px; }
+  .lightbox.open { display:flex; }
+  .lightbox img { max-width:100%; max-height:100%; border-radius:6px; }
+  footer { border-top:1px solid var(--line); margin-top:70px; padding-top:24px; font-size:13px; color:var(--dim); }
+  [data-lang="es"] { display:none; }
+  body.es [data-lang="en"] { display:none; }
+  body.es [data-lang="es"] { display:block; }
+  body.es span[data-lang="es"], body.es a[data-lang="es"], body.es figcaption[data-lang="es"] { display:inline; }
+  body.es li[data-lang="es"] { display:list-item; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GM Direct NTC <span>//</span> <span data-lang="en">User Manual</span><span data-lang="es">Manual de Usuario</span></h1>
+  <div class="lang-toggle">
+    <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+    <button id="btn-es" onclick="setLang('es')">ES</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+<nav class="toc">
+  <ol>
+    <li><a href="#install"><span data-lang="en">Installation &amp; Project Setup</span><span data-lang="es">Instalación y configuración del proyecto</span></a></li>
+    <li><a href="#dll"><span data-lang="en">Downloading the NVIDIA NTC Runtime (libntc.dll)</span><span data-lang="es">Descarga del runtime NVIDIA NTC (libntc.dll)</span></a></li>
+    <li><a href="#converter"><span data-lang="en">The Converter Panel</span><span data-lang="es">El panel Converter</span></a></li>
+    <li><a href="#convert"><span data-lang="en">Converting a Map</span><span data-lang="es">Convertir un mapa</span></a></li>
+    <li><a href="#profiles"><span data-lang="en">Quality Profiles</span><span data-lang="es">Perfiles de calidad</span></a></li>
+    <li><a href="#vram"><span data-lang="en">VRAM Budget &amp; Streaming Optimization</span><span data-lang="es">Presupuesto de VRAM y optimización de streaming</span></a></li>
+    <li><a href="#trouble"><span data-lang="en">Troubleshooting</span><span data-lang="es">Solución de problemas</span></a></li>
+  </ol>
+</nav>
+
+<!-- ============ 1. INSTALL ============ -->
+<h2 id="install"><span class="num">01</span><span data-lang="en">Installation &amp; Project Setup</span><span data-lang="es">Instalación y configuración del proyecto</span></h2>
+<div data-lang="en">
+  <p>Install the plugin from Fab (or copy the <code>GM_DIRECT_NTC</code> folder into your project's <code>Plugins/</code> directory), enable it in <b>Edit → Plugins</b> and restart the editor. Requirements: Unreal Engine 5.7, Windows 10/11 x64, DirectX 12, an NVIDIA RTX GPU.</p>
+  <p>Then open <b>Project Settings → Plugins → GM NTC Plugin</b> and run the numbered setup buttons in order:</p>
+  <ol>
+    <li><b>1. Auto-Configure for DirectStorage (Oodle/Zstd)</b> — sets the packaging compression and DirectStorage-friendly settings for your project.</li>
+    <li><b>2. Revert to Unreal Engine Defaults</b> — undoes step 1 if you ever need to.</li>
+    <li><b>3. Download NVIDIA NTC SDK (DLL)</b> — see next section.</li>
+  </ol>
+</div>
+<div data-lang="es">
+  <p>Instala el plugin desde Fab (o copia la carpeta <code>GM_DIRECT_NTC</code> en <code>Plugins/</code> de tu proyecto), actívalo en <b>Edit → Plugins</b> y reinicia el editor. Requisitos: Unreal Engine 5.7, Windows 10/11 x64, DirectX 12 y una GPU NVIDIA RTX.</p>
+  <p>Después abre <b>Project Settings → Plugins → GM NTC Plugin</b> y usa los botones numerados de setup en orden:</p>
+  <ol>
+    <li><b>1. Auto-Configure for DirectStorage (Oodle/Zstd)</b> — configura la compresión de empaquetado y los ajustes amigables con DirectStorage.</li>
+    <li><b>2. Revert to Unreal Engine Defaults</b> — deshace el paso 1 si lo necesitas.</li>
+    <li><b>3. Download NVIDIA NTC SDK (DLL)</b> — ver la siguiente sección.</li>
+  </ol>
+</div>
+<figure class="shot">
+  <img src="images/manual/02_settings_setup.png" alt="Project Settings - GM NTC Plugin">
+  <figcaption><span data-lang="en">Project Settings → Plugins → GM NTC Plugin: setup buttons and Quality Profiles.</span><span data-lang="es">Project Settings → Plugins → GM NTC Plugin: botones de setup y perfiles de calidad.</span></figcaption>
+</figure>
+
+<!-- ============ 2. DLL ============ -->
+<h2 id="dll"><span class="num">02</span><span data-lang="en">Downloading the NVIDIA NTC Runtime (libntc.dll)</span><span data-lang="es">Descarga del runtime NVIDIA NTC (libntc.dll)</span></h2>
+<div data-lang="en">
+  <p>The NVIDIA NTC runtime library <code>libntc.dll</code> is <b>not redistributable</b> under NVIDIA's license, so it is not shipped inside the plugin. It is downloaded once:</p>
+  <ol>
+    <li>Open <b>Project Settings → Plugins → GM NTC Plugin</b>.</li>
+    <li>Click <b>3. Download NVIDIA NTC SDK (DLL)</b> (or run the console command <code>GMNTC.DownloadSDK</code>).</li>
+    <li>Restart the editor when prompted.</li>
+  </ol>
+  <p>The DLL is placed in <code>Plugins/GM_DIRECT_NTC/Source/ThirdParty/GM_NTC_SDK/bin/windows-x64/</code>. When you package your game, <code>libntc.dll</code> is included in the final build automatically.</p>
+  <div class="tip"><span data-lang="en"><b>Tip:</b> the download also configures the Virtual Texture pools your project needs. If you ever see the "Resizing Virtual Texture Pools" notification, press <b>Fix Virtual Texture Pools</b> in the same settings page and restart.</span></div>
+</div>
+<div data-lang="es">
+  <p>La librería runtime de NVIDIA <code>libntc.dll</code> <b>no es redistribuible</b> bajo la licencia de NVIDIA, por lo que no viene dentro del plugin. Se descarga una sola vez:</p>
+  <ol>
+    <li>Abre <b>Project Settings → Plugins → GM NTC Plugin</b>.</li>
+    <li>Pulsa <b>3. Download NVIDIA NTC SDK (DLL)</b> (o ejecuta el comando de consola <code>GMNTC.DownloadSDK</code>).</li>
+    <li>Reinicia el editor cuando se te indique.</li>
+  </ol>
+  <p>La DLL se instala en <code>Plugins/GM_DIRECT_NTC/Source/ThirdParty/GM_NTC_SDK/bin/windows-x64/</code>. Al empaquetar tu juego, <code>libntc.dll</code> se incluye automáticamente en el build final.</p>
+  <div class="tip"><b>Consejo:</b> la descarga también configura los pools de Virtual Texture que tu proyecto necesita. Si alguna vez ves el aviso "Resizing Virtual Texture Pools", pulsa <b>Fix Virtual Texture Pools</b> en la misma página de ajustes y reinicia.</div>
+</div>
+
+<!-- ============ 3. CONVERTER PANEL ============ -->
+<h2 id="converter"><span class="num">03</span><span data-lang="en">The Converter Panel</span><span data-lang="es">El panel Converter</span></h2>
+<div data-lang="en">
+  <p>Open it from <b>Window → GM NTC Converter</b>. From here you drive the whole workflow:</p>
+  <ul>
+    <li><b>Compression Quality</b> — active quality profile (see section 05).</li>
+    <li><b>Enable VNTC</b> — converts textures as Virtual Textures with on-demand tile inference (recommended).</li>
+    <li><b>Quick Scan</b> — analyzes the open map and lists every convertible material without changing anything.</li>
+    <li><b>Convert Entire Map / Convert Selected</b> — runs the NTC compression.</li>
+    <li><b>Revert Entire Map / Revert Selected</b> — restores the original materials and textures.</li>
+    <li><b>Detailed Node Map / Ref. Viewer</b> — inspection tools for converted material graphs and references.</li>
+    <li><b>Clean Sandbox</b> — removes the working copies under <code>/GM_NTC_Converted</code>.</li>
+  </ul>
+</div>
+<div data-lang="es">
+  <p>Ábrelo desde <b>Window → GM NTC Converter</b>. Desde aquí manejas todo el flujo:</p>
+  <ul>
+    <li><b>Compression Quality</b> — perfil de calidad activo (ver sección 05).</li>
+    <li><b>Enable VNTC</b> — convierte las texturas como Virtual Textures con inferencia por tile bajo demanda (recomendado).</li>
+    <li><b>Quick Scan</b> — analiza el mapa abierto y lista los materiales convertibles sin cambiar nada.</li>
+    <li><b>Convert Entire Map / Convert Selected</b> — ejecuta la compresión NTC.</li>
+    <li><b>Revert Entire Map / Revert Selected</b> — restaura los materiales y texturas originales.</li>
+    <li><b>Detailed Node Map / Ref. Viewer</b> — herramientas de inspección de grafos y referencias convertidas.</li>
+    <li><b>Clean Sandbox</b> — elimina las copias de trabajo en <code>/GM_NTC_Converted</code>.</li>
+  </ul>
+</div>
+<figure class="shot">
+  <img src="images/manual/01_converter_panel.png" alt="GM NTC Converter panel">
+  <figcaption><span data-lang="en">The GM NTC DirectStorage System panel, ready to scan or convert.</span><span data-lang="es">El panel GM NTC DirectStorage System, listo para escanear o convertir.</span></figcaption>
+</figure>
+
+<!-- ============ 4. CONVERT ============ -->
+<h2 id="convert"><span class="num">04</span><span data-lang="en">Converting a Map</span><span data-lang="es">Convertir un mapa</span></h2>
+<div data-lang="en">
+  <ol>
+    <li>Open the map you want to compress.</li>
+    <li>Pick a <b>Compression Quality</b> profile and keep <b>Enable VNTC</b> checked.</li>
+    <li>(Optional) press <b>Quick Scan</b> to preview what will be converted.</li>
+    <li>Press <b>Convert Entire Map</b> and wait — the log at the bottom shows progress per material.</li>
+    <li>When it finishes, review the results table: original size (<b>Pre-DS</b>), compressed size (<b>Post-DS</b>) and status per material.</li>
+    <li>Save. Originals are isolated in <code>/GM_NTC_Isolated</code> so <b>Revert</b> can always restore them.</li>
+  </ol>
+  <p>In the example below, 140 materials went from <b>2768.5 MB to 297.7 MB — a 2470.8 MB saving (~9×)</b> with no visual loss.</p>
+</div>
+<div data-lang="es">
+  <ol>
+    <li>Abre el mapa que quieres comprimir.</li>
+    <li>Elige un perfil en <b>Compression Quality</b> y deja marcado <b>Enable VNTC</b>.</li>
+    <li>(Opcional) pulsa <b>Quick Scan</b> para previsualizar qué se convertirá.</li>
+    <li>Pulsa <b>Convert Entire Map</b> y espera — el log inferior muestra el progreso por material.</li>
+    <li>Al terminar, revisa la tabla: tamaño original (<b>Pre-DS</b>), comprimido (<b>Post-DS</b>) y estado por material.</li>
+    <li>Guarda. Los originales quedan aislados en <code>/GM_NTC_Isolated</code>, así que <b>Revert</b> siempre puede restaurarlos.</li>
+  </ol>
+  <p>En el ejemplo de abajo, 140 materiales pasaron de <b>2768.5 MB a 297.7 MB — un ahorro de 2470.8 MB (~9×)</b> sin pérdida visual.</p>
+</div>
+<figure class="shot">
+  <img src="images/manual/04_conversion_results.png" alt="Conversion results">
+  <figcaption><span data-lang="en">Results after Convert Entire Map: 140 assets, 2768.5 MB → 297.7 MB.</span><span data-lang="es">Resultados tras Convert Entire Map: 140 assets, 2768.5 MB → 297.7 MB.</span></figcaption>
+</figure>
+<div class="warn"><span data-lang="en"><b>Note:</b> materials using <code>BLEND_Masked</code>, Landscape or WorldAligned nodes are excluded automatically to preserve correctness.</span><span data-lang="es"><b>Nota:</b> los materiales con <code>BLEND_Masked</code>, Landscape o nodos WorldAligned se excluyen automáticamente para preservar el resultado.</span></div>
+
+<!-- ============ 5. PROFILES ============ -->
+<h2 id="profiles"><span class="num">05</span><span data-lang="en">Quality Profiles</span><span data-lang="es">Perfiles de calidad</span></h2>
+<div data-lang="en"><p>Four editable profiles control bits-per-pixel (BPP) per channel and neural training steps. Higher BPP / more steps = better fidelity, larger files, longer conversion.</p></div>
+<div data-lang="es"><p>Cuatro perfiles editables controlan los bits por píxel (BPP) por canal y los pasos de entrenamiento neuronal. Más BPP / más pasos = mayor fidelidad, archivos más grandes y conversión más larga.</p></div>
+<table>
+  <tr><th data-lang="en">Profile</th><th data-lang="es">Perfil</th><th data-lang="en">Use case</th><th data-lang="es">Caso de uso</th></tr>
+  <tr><td colspan="2"><b>Performance</b></td><td data-lang="en">Maximum compression; ideal for dense scenes and VRAM-limited GPUs.</td><td data-lang="es">Máxima compresión; ideal para escenas densas y GPUs con poca VRAM.</td></tr>
+  <tr><td colspan="2"><b>Balanced</b></td><td data-lang="en">Good default for most projects.</td><td data-lang="es">Buen punto de partida para la mayoría de proyectos.</td></tr>
+  <tr><td colspan="2"><b>Detail</b></td><td data-lang="en">Extra fidelity on masks/roughness for hero assets.</td><td data-lang="es">Fidelidad extra en máscaras/roughness para assets protagonistas.</td></tr>
+  <tr><td colspan="2"><b>Production</b></td><td data-lang="en">Highest fidelity; longest training time.</td><td data-lang="es">Máxima fidelidad; mayor tiempo de entrenamiento.</td></tr>
+</table>
+<div data-lang="en"><div class="tip"><b>Tip:</b> <b>Revert material to BC7 if NTC is larger</b> (enabled by default) guarantees a conversion never increases the size of a material.</div></div>
+<div data-lang="es"><div class="tip"><b>Consejo:</b> <b>Revert material to BC7 if NTC is larger</b> (activo por defecto) garantiza que una conversión nunca aumente el tamaño de un material.</div></div>
+
+<!-- ============ 6. VRAM ============ -->
+<h2 id="vram"><span class="num">06</span><span data-lang="en">VRAM Budget &amp; Streaming Optimization</span><span data-lang="es">Presupuesto de VRAM y optimización de streaming</span></h2>
+<div data-lang="en">
+  <p>The plugin detects your GPU VRAM at startup and applies a safe budget automatically (<b>Auto-Detect VRAM Budget on Startup</b>). You can set a manual budget instead, and re-apply at any time with <b>Re-Apply VRAM Budget Now</b>.</p>
+  <p><b>Streaming Optimization</b> smooths camera turns and prevents VRAM spikes: textures streamed per frame, hidden-primitive scale, amortized CPU→GPU copies and a streaming pool limited to the available VRAM. The <i>Currently Applied</i> row shows the live values.</p>
+</div>
+<div data-lang="es">
+  <p>El plugin detecta la VRAM de tu GPU al arrancar y aplica un presupuesto seguro automáticamente (<b>Auto-Detect VRAM Budget on Startup</b>). Puedes fijar un presupuesto manual y re-aplicarlo cuando quieras con <b>Re-Apply VRAM Budget Now</b>.</p>
+  <p><b>Streaming Optimization</b> suaviza los giros de cámara y evita picos de VRAM: texturas streameadas por frame, escala de primitivas ocultas, copias CPU→GPU amortizadas y pool de streaming limitado a la VRAM disponible. La fila <i>Currently Applied</i> muestra los valores activos.</p>
+</div>
+<figure class="shot">
+  <img src="images/manual/03_settings_streaming.png" alt="VRAM budget and streaming optimization settings">
+  <figcaption><span data-lang="en">VRAM Budget, Streaming Optimization, Size Report and Cleanup tools.</span><span data-lang="es">Presupuesto de VRAM, Streaming Optimization, Size Report y herramientas de limpieza.</span></figcaption>
+</figure>
+
+<!-- ============ 7. TROUBLESHOOTING ============ -->
+<h2 id="trouble"><span class="num">07</span><span data-lang="en">Troubleshooting</span><span data-lang="es">Solución de problemas</span></h2>
+<table>
+  <tr><th data-lang="en">Symptom</th><th data-lang="es">Síntoma</th><th data-lang="en">Fix</th><th data-lang="es">Solución</th></tr>
+  <tr>
+    <td data-lang="en">Nothing decodes / crash on load</td><td data-lang="es">Nada decodifica / crash al cargar</td>
+    <td data-lang="en">Confirm <code>libntc.dll</code> was downloaded (Project Settings → GM NTC) and restart the editor.</td>
+    <td data-lang="es">Confirma que <code>libntc.dll</code> se descargó (Project Settings → GM NTC) y reinicia el editor.</td>
+  </tr>
+  <tr>
+    <td data-lang="en">"Resizing Virtual Texture Pools" keeps appearing</td><td data-lang="es">"Resizing Virtual Texture Pools" reaparece</td>
+    <td data-lang="en">Press <b>Fix Virtual Texture Pools</b> and restart. The config persists in <code>DefaultEngine.ini</code>.</td>
+    <td data-lang="es">Pulsa <b>Fix Virtual Texture Pools</b> y reinicia. La config persiste en <code>DefaultEngine.ini</code>.</td>
+  </tr>
+  <tr>
+    <td data-lang="en">A material looks wrong after converting</td><td data-lang="es">Un material se ve mal tras convertir</td>
+    <td data-lang="en">Select it and press <b>Revert Selected</b>, then reconvert it individually or exclude it.</td>
+    <td data-lang="es">Selecciónalo y pulsa <b>Revert Selected</b>; reconviértelo individualmente o exclúyelo.</td>
+  </tr>
+  <tr>
+    <td data-lang="en">Want to undo everything</td><td data-lang="es">Quieres deshacer todo</td>
+    <td data-lang="en"><b>Revert Entire Map</b> restores all originals from <code>/GM_NTC_Isolated</code>.</td>
+    <td data-lang="es"><b>Revert Entire Map</b> restaura todos los originales desde <code>/GM_NTC_Isolated</code>.</td>
+  </tr>
+</table>
+<div data-lang="en"><p>Useful console commands: <code>GMNTC.DownloadSDK</code>, <code>GMNTC.TidyNodes</code>, <code>ntc.RefreshMaterials</code>.</p></div>
+<div data-lang="es"><p>Comandos de consola útiles: <code>GMNTC.DownloadSDK</code>, <code>GMNTC.TidyNodes</code>, <code>ntc.RefreshMaterials</code>.</p></div>
+
+<h2 id="disclaimer"><span class="num">08</span><span data-lang="en">Disclaimer &amp; Safe Use</span><span data-lang="es">Descargo de responsabilidad y uso seguro</span></h2>
+<div data-lang="en">
+  <p>The plugin is provided <b>"AS IS"</b>, without warranty of any kind. To the maximum extent permitted by law, the author is not liable for any damages — including loss or corruption of data, assets, materials or projects — arising from the use of, or inability to use, the plugin.</p>
+  <div class="warn"><b>Read before use:</b> the plugin modifies materials, textures, asset references and project configuration files.
+  <ul>
+    <li>FIRST use it in a separate <b>test/sandbox project</b> until you master the Convert, Isolate, Revert and Clean workflows.</li>
+    <li>ALWAYS make a full <b>backup</b> (or commit to source control) before converting or isolating real assets.</li>
+    <li>Verify results in the test project before deploying to production.</li>
+  </ul>
+  By using the plugin you accept full responsibility for testing and backing up your own projects.</div>
+</div>
+<div data-lang="es">
+  <p>El plugin se entrega <b>"TAL CUAL"</b>, sin garantía de ningún tipo. En la máxima medida permitida por la ley, el autor no responde por daños — incluida la pérdida o corrupción de datos, assets, materiales o proyectos — derivados del uso o la imposibilidad de uso del plugin.</p>
+  <div class="warn"><b>Lee antes de usar:</b> el plugin modifica materiales, texturas, referencias de assets y archivos de configuración del proyecto.
+  <ul>
+    <li>ÚSALO PRIMERO en un <b>proyecto de prueba/sandbox</b> aparte hasta dominar los flujos Convert, Isolate, Revert y Clean.</li>
+    <li>Haz SIEMPRE una <b>copia de seguridad</b> (o commit a control de versiones) antes de convertir o aislar assets reales.</li>
+    <li>Verifica los resultados en el proyecto de prueba antes de usarlo en producción.</li>
+  </ul>
+  Al usar el plugin aceptas la plena responsabilidad de probar y respaldar tus propios proyectos.</div>
+</div>
+
+<footer>
+  <p data-lang="en">GM Direct NTC — Neural Texture Compression for Unreal Engine 5.7. This product uses the NVIDIA RTX Neural Texture Compression SDK and NVIDIA nvCOMP. NVIDIA does not sponsor or endorse this product. © 2026 Gonzalo Morales.</p>
+  <p data-lang="es">GM Direct NTC — Neural Texture Compression para Unreal Engine 5.7. Este producto usa el NVIDIA RTX Neural Texture Compression SDK y NVIDIA nvCOMP. NVIDIA no patrocina ni respalda este producto. © 2026 Gonzalo Morales.</p>
+  <p><a href="GM_NTC_PLUGIN.html" data-lang="en">← Back to product page</a><a href="GM_NTC_PLUGIN_es.html" data-lang="es">← Volver a la página del producto</a></p>
+</footer>
+
+</div>
+
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')"><img id="lightbox-img" src="" alt=""></div>
+
+<script>
+function setLang(l){
+  document.body.classList.toggle('es', l==='es');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-es').classList.toggle('active', l==='es');
+  document.documentElement.lang = l;
+  try{ localStorage.setItem('gmntc_lang', l); }catch(e){}
+}
+try{ var s=localStorage.getItem('gmntc_lang'); if(s) setLang(s); }catch(e){}
+document.querySelectorAll('.shot img').forEach(function(img){
+  img.addEventListener('click', function(){
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
